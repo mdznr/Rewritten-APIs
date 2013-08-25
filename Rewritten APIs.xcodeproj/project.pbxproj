@@ -22,6 +22,9 @@
 		C9DA9D8717C7C6F500BFC6E4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9DA9D6617C7C6F500BFC6E4 /* UIKit.framework */; };
 		C9DA9D8F17C7C6F500BFC6E4 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C9DA9D8D17C7C6F500BFC6E4 /* InfoPlist.strings */; };
 		C9DA9D9117C7C6F500BFC6E4 /* Rewritten_APIsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C9DA9D9017C7C6F500BFC6E4 /* Rewritten_APIsTests.m */; };
+		C9DA9D9C17C7CACE00BFC6E4 /* MTZActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = C9DA9D9B17C7CACE00BFC6E4 /* MTZActionSheet.m */; };
+		C9DA9DA217C807FB00BFC6E4 /* MTZAction.m in Sources */ = {isa = PBXBuildFile; fileRef = C9DA9DA117C807FB00BFC6E4 /* MTZAction.m */; };
+		C9DA9DAB17C8172800BFC6E4 /* UIActionSheet+DelegateFix.m in Sources */ = {isa = PBXBuildFile; fileRef = C9DA9DAA17C8172800BFC6E4 /* UIActionSheet+DelegateFix.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +58,13 @@
 		C9DA9D8C17C7C6F500BFC6E4 /* Rewritten APIsTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Rewritten APIsTests-Info.plist"; sourceTree = "<group>"; };
 		C9DA9D8E17C7C6F500BFC6E4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		C9DA9D9017C7C6F500BFC6E4 /* Rewritten_APIsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Rewritten_APIsTests.m; sourceTree = "<group>"; };
+		C9DA9D9A17C7CACE00BFC6E4 /* MTZActionSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTZActionSheet.h; sourceTree = "<group>"; };
+		C9DA9D9B17C7CACE00BFC6E4 /* MTZActionSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTZActionSheet.m; sourceTree = "<group>"; };
+		C9DA9DA017C807FB00BFC6E4 /* MTZAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTZAction.h; sourceTree = "<group>"; };
+		C9DA9DA117C807FB00BFC6E4 /* MTZAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTZAction.m; sourceTree = "<group>"; };
+		C9DA9DA917C8172800BFC6E4 /* UIActionSheet+DelegateFix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIActionSheet+DelegateFix.h"; sourceTree = "<group>"; };
+		C9DA9DAA17C8172800BFC6E4 /* UIActionSheet+DelegateFix.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIActionSheet+DelegateFix.m"; sourceTree = "<group>"; };
+		C9DA9DF017C9C12D00BFC6E4 /* MTZActionSheetDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTZActionSheetDelegate.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +130,13 @@
 				C9DA9D7717C7C6F500BFC6E4 /* Main_iPad.storyboard */,
 				C9DA9D7A17C7C6F500BFC6E4 /* MTZViewController.h */,
 				C9DA9D7B17C7C6F500BFC6E4 /* MTZViewController.m */,
+				C9DA9DA017C807FB00BFC6E4 /* MTZAction.h */,
+				C9DA9DA117C807FB00BFC6E4 /* MTZAction.m */,
+				C9DA9D9A17C7CACE00BFC6E4 /* MTZActionSheet.h */,
+				C9DA9D9B17C7CACE00BFC6E4 /* MTZActionSheet.m */,
+				C9DA9DF017C9C12D00BFC6E4 /* MTZActionSheetDelegate.h */,
+				C9DA9DA917C8172800BFC6E4 /* UIActionSheet+DelegateFix.h */,
+				C9DA9DAA17C8172800BFC6E4 /* UIActionSheet+DelegateFix.m */,
 				C9DA9D7D17C7C6F500BFC6E4 /* Images.xcassets */,
 				C9DA9D6917C7C6F500BFC6E4 /* Supporting Files */,
 			);
@@ -254,7 +271,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C9DA9DAB17C8172800BFC6E4 /* UIActionSheet+DelegateFix.m in Sources */,
+				C9DA9DA217C807FB00BFC6E4 /* MTZAction.m in Sources */,
 				C9DA9D7317C7C6F500BFC6E4 /* MTZAppDelegate.m in Sources */,
+				C9DA9D9C17C7CACE00BFC6E4 /* MTZActionSheet.m in Sources */,
 				C9DA9D6F17C7C6F500BFC6E4 /* main.m in Sources */,
 				C9DA9D7C17C7C6F500BFC6E4 /* MTZViewController.m in Sources */,
 			);
@@ -392,6 +412,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Rewritten APIs/Rewritten APIs-Prefix.pch";
 				INFOPLIST_FILE = "Rewritten APIs/Rewritten APIs-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -405,6 +426,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Rewritten APIs/Rewritten APIs-Prefix.pch";
 				INFOPLIST_FILE = "Rewritten APIs/Rewritten APIs-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
