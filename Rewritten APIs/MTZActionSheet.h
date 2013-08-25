@@ -28,7 +28,7 @@ NS_CLASS_AVAILABLE_IOS(2_0) @interface MTZActionSheet : NSObject
 @property (strong, nonatomic) NSString *cancelButtonTitle;
 @property (strong, nonatomic) NSString *destructiveButtonTitle;
 
-@property (nonatomic) UIActionSheetStyle actionSheetStyle;  // default is UIActionSheetStyleAutomatic. ignored if alert is visible
+@property (nonatomic) UIActionSheetStyle actionSheetStyle;  // Default is UIActionSheetStyleAutomatic. Ignored if alert is visible
 #warning should setting visibility show and hide the action sheet? This behaviour works for UIWindow
 @property (nonatomic, readonly, getter=isVisible) BOOL visible;
 
@@ -71,8 +71,10 @@ NS_CLASS_AVAILABLE_IOS(2_0) @interface MTZActionSheet : NSObject
 
 #pragma mark Dismissing the Action Sheet
 
+// Hides the alert and behaves like tapping the cancel button
 - (void)dismissWithCancel;
-//- (void)dismissWithTappedButtonIndex:(NSInteger)buttonIndex animated:(BOOL)animated;
+
+// Hides the action sheet. Use this method when you need to explicitly dismiss the action sheet.
 - (void)dismissWithTappedButtonTitle:(NSString *)buttonTitle animated:(BOOL)animated;
 
 @end
@@ -84,18 +86,28 @@ NS_CLASS_AVAILABLE_IOS(2_0) @interface MTZActionSheet : NSObject
 @optional
 
 #pragma mark Responding to Actions
+
 // Called when the destructive button is tapped. The view will be automatically dismissed after this call returns
 - (void)actionSheetDidTapDestructiveButton:(MTZActionSheet *)actionSheet;
+
 // Called when the cancel button is tapped. The view will be automatically dismissed after this call returns
 - (void)actionSheetDidTapCancelButton:(MTZActionSheet *)actionSheet;
 
+
 #pragma mark Customizing Behavior
-- (void)willPresentActionSheet:(MTZActionSheet *)actionSheet;  // before animation and showing view
-- (void)didPresentActionSheet:(MTZActionSheet *)actionSheet;  // after animation
+
+// Called before animation and showing view
+- (void)willPresentActionSheet:(MTZActionSheet *)actionSheet;
+
+// Called after animation
+- (void)didPresentActionSheet:(MTZActionSheet *)actionSheet;
+
 
 #pragma mark Canceling
+
 // Called when we cancel a view (eg. the user clicks the Home button). This is not called when the user clicks the cancel button.
 // If not defined in the delegate, we simulate a click in the cancel button
 - (void)actionSheetDidCancel:(MTZActionSheet *)actionSheet;
+
 
 @end
