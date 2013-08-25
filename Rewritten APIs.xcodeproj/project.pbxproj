@@ -64,7 +64,6 @@
 		C9DA9DA117C807FB00BFC6E4 /* MTZAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTZAction.m; sourceTree = "<group>"; };
 		C9DA9DA917C8172800BFC6E4 /* UIActionSheet+DelegateFix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIActionSheet+DelegateFix.h"; sourceTree = "<group>"; };
 		C9DA9DAA17C8172800BFC6E4 /* UIActionSheet+DelegateFix.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIActionSheet+DelegateFix.m"; sourceTree = "<group>"; };
-		C9DA9DF017C9C12D00BFC6E4 /* MTZActionSheetDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTZActionSheetDelegate.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,7 +133,6 @@
 				C9DA9DA117C807FB00BFC6E4 /* MTZAction.m */,
 				C9DA9D9A17C7CACE00BFC6E4 /* MTZActionSheet.h */,
 				C9DA9D9B17C7CACE00BFC6E4 /* MTZActionSheet.m */,
-				C9DA9DF017C9C12D00BFC6E4 /* MTZActionSheetDelegate.h */,
 				C9DA9DA917C8172800BFC6E4 /* UIActionSheet+DelegateFix.h */,
 				C9DA9DAA17C8172800BFC6E4 /* UIActionSheet+DelegateFix.m */,
 				C9DA9D7D17C7C6F500BFC6E4 /* Images.xcassets */,
