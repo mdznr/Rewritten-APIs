@@ -42,31 +42,41 @@
 }
 
 
+#pragma mark Action Sheet
+
 - (void)didTapActionSheetButton:(id)sender
 {
-	MTZActionSheet *as = [[MTZActionSheet alloc] initWithTitle:@"MY TITLE"];
+	MTZActionSheet *as = [[MTZActionSheet alloc] initWithTitle:@"My Action Sheet Title"];
 	[as setDelegate:self];
-	[as addButtonWithTitle:@"My Title" andSelector:@selector(tappedMyTitle:)];
-	as.cancelButtonTitle = @"CANCELAR";
-	as.destructiveButtonTitle = @"DESTRUCTIVe";
+	[as addButtonWithTitle:@"Other Button" andSelector:@selector(tappedOtherButton:)];
+	[as addButtonWithTitle:@"Another Button" andSelector:@selector(tappedAnotherButton)];
+	as.cancelButtonTitle = @"Cancel";
+	as.destructiveButtonTitle = @"Destructive";
 	[as showInView:self.view];
 }
 
 - (void)actionSheetDidTapDestructiveButton:(MTZActionSheet *)actionSheet
 {
-	NSLog(@"DESTRUCTIVE");
+	NSLog(@"Action Sheet (%@) tapped Destructive Button", actionSheet);
 }
 
 - (void)actionSheetDidTapCancelButton:(MTZActionSheet *)actionSheet
 {
-	NSLog(@"CANCEL");
+	NSLog(@"Action Sheet (%@) tapped Cancel Button", actionSheet);
 }
 
-- (void)tappedMyTitle:(id)sender
+- (void)tappedOtherButton:(id)sender
 {
-	NSLog(@"TAPPED MYTITLE");
+	NSLog(@"Tapped Other Button: %@", sender);
 }
 
+- (void)tappedAnotherButton
+{
+	NSLog(@"Tapped Another Button");
+}
+
+
+#pragma mark Alert
 
 - (void)didTapAlertButton:(id)sender
 {
