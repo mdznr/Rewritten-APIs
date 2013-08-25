@@ -11,6 +11,8 @@
 
 @interface MTZViewController () <MTZActionSheetDelegate>
 
+@property (strong, nonatomic) MTZActionSheet *actionSheet;
+
 @end
 
 @implementation MTZViewController
@@ -22,6 +24,7 @@
 	
 	self.view.backgroundColor = [UIColor whiteColor];
 	
+	// Setting up Action Sheet Button
 	UIButton *actionSheetButton = [[UIButton alloc] initWithFrame:CGRectMake(10, 10, 300, 44)];
 	[actionSheetButton setBackgroundColor:[UIColor blueColor]];
 	[actionSheetButton setShowsTouchWhenHighlighted:YES];
@@ -31,14 +34,15 @@
 				forControlEvents:UIControlEventTouchUpInside];
 	[self.view addSubview:actionSheetButton];
 	
-	UIButton *alertButton = [[UIButton alloc] initWithFrame:CGRectMake(10, 64, 300, 44)];
-	[alertButton setBackgroundColor:[UIColor blueColor]];
-	[alertButton setShowsTouchWhenHighlighted:YES];
-	[alertButton setTitle:@"Show Alert" forState:UIControlStateNormal];
-	[alertButton addTarget:self
-					action:@selector(didTapAlertButton:)
-		  forControlEvents:UIControlEventTouchUpInside];
-	[self.view addSubview:alertButton];
+	// Setting up Alert View Button
+	UIButton *alertViewButton = [[UIButton alloc] initWithFrame:CGRectMake(10, 64, 300, 44)];
+	[alertViewButton setBackgroundColor:[UIColor blueColor]];
+	[alertViewButton setShowsTouchWhenHighlighted:YES];
+	[alertViewButton setTitle:@"Show Alert" forState:UIControlStateNormal];
+	[alertViewButton addTarget:self
+						action:@selector(didTapAlertButton:)
+			  forControlEvents:UIControlEventTouchUpInside];
+	[self.view addSubview:alertViewButton];
 }
 
 
@@ -46,13 +50,32 @@
 
 - (void)didTapActionSheetButton:(id)sender
 {
-	MTZActionSheet *as = [[MTZActionSheet alloc] initWithTitle:@"My Action Sheet Title"];
-	[as setDelegate:self];
-	[as addButtonWithTitle:@"Other Button" andSelector:@selector(tappedOtherButton:)];
-	[as addButtonWithTitle:@"Another Button" andSelector:@selector(tappedAnotherButton)];
-	as.cancelButtonTitle = @"Cancel";
-	as.destructiveButtonTitle = @"Destructive";
-	[as showInView:self.view];
+	_actionSheet = [[MTZActionSheet alloc] init];
+	_actionSheet.title = @"My Action Sheet Title";
+	_actionSheet.delegate = self;
+	_actionSheet.cancelButtonTitle = @"Cancel";
+	_actionSheet.destructiveButtonTitle = @"Destructive";
+	[_actionSheet addButtonWithTitle:@"Other Button" andSelector:@selector(tappedOtherButton:)];
+	[_actionSheet addButtonWithTitle:@"Another Button" andSelector:@selector(tappedAnotherButton)];
+	[_actionSheet showInView:self.view];
+	
+	/*
+	[self performSelector:@selector(actionSheetAPITest)
+			   withObject:nil
+			   afterDelay:2.0f];
+	 */
+}
+
+- (void)actionSheetAPITest
+{
+	NSLog(@"%@", _actionSheet.buttonTitles);
+	NSLog(@"%@", _actionSheet.otherButtonTitles);
+	NSLog(@"%lu", (unsigned long) _actionSheet.numberOfButtons);
+	NSLog(@"%lu", (unsigned long) _actionSheet.numberOfOtherButtons);
+//	[_actionSheet dismissWithTappedButtonTitle:_actionSheet.cancelButtonTitle animated:YES]; // This shouldn't be necessary
+//	[_actionSheet dismissWithTappedButtonTitle:_actionSheet.destructiveButtonTitle animated:YES]; // This shouldn't be necessary
+//	[_actionSheet dismissWithTappedButtonTitle:@"Cancel" animated:YES]; // This shouldn't be necessary
+	[_actionSheet dismissWithCancel];
 }
 
 - (void)actionSheetDidTapDestructiveButton:(MTZActionSheet *)actionSheet
