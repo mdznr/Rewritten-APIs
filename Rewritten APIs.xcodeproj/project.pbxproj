@@ -25,6 +25,8 @@
 		C9DA9D9C17C7CACE00BFC6E4 /* MTZActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = C9DA9D9B17C7CACE00BFC6E4 /* MTZActionSheet.m */; };
 		C9DA9DA217C807FB00BFC6E4 /* MTZAction.m in Sources */ = {isa = PBXBuildFile; fileRef = C9DA9DA117C807FB00BFC6E4 /* MTZAction.m */; };
 		C9DA9DAB17C8172800BFC6E4 /* UIActionSheet+DelegateFix.m in Sources */ = {isa = PBXBuildFile; fileRef = C9DA9DAA17C8172800BFC6E4 /* UIActionSheet+DelegateFix.m */; };
+		C9DA9DF517CA7ED600BFC6E4 /* MTZAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = C9DA9DF417CA7ED600BFC6E4 /* MTZAlertView.m */; };
+		C9DA9DFB17CA8BF300BFC6E4 /* UIAlertView+DelegateFix.m in Sources */ = {isa = PBXBuildFile; fileRef = C9DA9DFA17CA8BF300BFC6E4 /* UIAlertView+DelegateFix.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +66,10 @@
 		C9DA9DA117C807FB00BFC6E4 /* MTZAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTZAction.m; sourceTree = "<group>"; };
 		C9DA9DA917C8172800BFC6E4 /* UIActionSheet+DelegateFix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIActionSheet+DelegateFix.h"; sourceTree = "<group>"; };
 		C9DA9DAA17C8172800BFC6E4 /* UIActionSheet+DelegateFix.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIActionSheet+DelegateFix.m"; sourceTree = "<group>"; };
+		C9DA9DF317CA7ED600BFC6E4 /* MTZAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTZAlertView.h; sourceTree = "<group>"; };
+		C9DA9DF417CA7ED600BFC6E4 /* MTZAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTZAlertView.m; sourceTree = "<group>"; };
+		C9DA9DF917CA8BF300BFC6E4 /* UIAlertView+DelegateFix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIAlertView+DelegateFix.h"; sourceTree = "<group>"; };
+		C9DA9DFA17CA8BF300BFC6E4 /* UIAlertView+DelegateFix.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAlertView+DelegateFix.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,12 +135,7 @@
 				C9DA9D7717C7C6F500BFC6E4 /* Main_iPad.storyboard */,
 				C9DA9D7A17C7C6F500BFC6E4 /* MTZViewController.h */,
 				C9DA9D7B17C7C6F500BFC6E4 /* MTZViewController.m */,
-				C9DA9DA017C807FB00BFC6E4 /* MTZAction.h */,
-				C9DA9DA117C807FB00BFC6E4 /* MTZAction.m */,
-				C9DA9D9A17C7CACE00BFC6E4 /* MTZActionSheet.h */,
-				C9DA9D9B17C7CACE00BFC6E4 /* MTZActionSheet.m */,
-				C9DA9DA917C8172800BFC6E4 /* UIActionSheet+DelegateFix.h */,
-				C9DA9DAA17C8172800BFC6E4 /* UIActionSheet+DelegateFix.m */,
+				C9DA9DF817CA7F7300BFC6E4 /* Classes */,
 				C9DA9D7D17C7C6F500BFC6E4 /* Images.xcassets */,
 				C9DA9D6917C7C6F500BFC6E4 /* Supporting Files */,
 			);
@@ -168,6 +169,39 @@
 				C9DA9D8D17C7C6F500BFC6E4 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		C9DA9DF617CA7EE200BFC6E4 /* Action Sheet */ = {
+			isa = PBXGroup;
+			children = (
+				C9DA9D9A17C7CACE00BFC6E4 /* MTZActionSheet.h */,
+				C9DA9D9B17C7CACE00BFC6E4 /* MTZActionSheet.m */,
+				C9DA9DA917C8172800BFC6E4 /* UIActionSheet+DelegateFix.h */,
+				C9DA9DAA17C8172800BFC6E4 /* UIActionSheet+DelegateFix.m */,
+			);
+			name = "Action Sheet";
+			sourceTree = "<group>";
+		};
+		C9DA9DF717CA7EE900BFC6E4 /* Alert View */ = {
+			isa = PBXGroup;
+			children = (
+				C9DA9DF317CA7ED600BFC6E4 /* MTZAlertView.h */,
+				C9DA9DF417CA7ED600BFC6E4 /* MTZAlertView.m */,
+				C9DA9DF917CA8BF300BFC6E4 /* UIAlertView+DelegateFix.h */,
+				C9DA9DFA17CA8BF300BFC6E4 /* UIAlertView+DelegateFix.m */,
+			);
+			name = "Alert View";
+			sourceTree = "<group>";
+		};
+		C9DA9DF817CA7F7300BFC6E4 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				C9DA9DA017C807FB00BFC6E4 /* MTZAction.h */,
+				C9DA9DA117C807FB00BFC6E4 /* MTZAction.m */,
+				C9DA9DF617CA7EE200BFC6E4 /* Action Sheet */,
+				C9DA9DF717CA7EE900BFC6E4 /* Alert View */,
+			);
+			name = Classes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -270,6 +304,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				C9DA9DAB17C8172800BFC6E4 /* UIActionSheet+DelegateFix.m in Sources */,
+				C9DA9DF517CA7ED600BFC6E4 /* MTZAlertView.m in Sources */,
+				C9DA9DFB17CA8BF300BFC6E4 /* UIAlertView+DelegateFix.m in Sources */,
 				C9DA9DA217C807FB00BFC6E4 /* MTZAction.m in Sources */,
 				C9DA9D7317C7C6F500BFC6E4 /* MTZAppDelegate.m in Sources */,
 				C9DA9D9C17C7CACE00BFC6E4 /* MTZActionSheet.m in Sources */,
