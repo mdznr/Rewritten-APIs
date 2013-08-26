@@ -24,11 +24,10 @@ NS_CLASS_AVAILABLE_IOS(2_0) @interface MTZActionSheet : NSObject
 
 @property (strong, nonatomic) id<MTZActionSheetDelegate> delegate;
 
-@property (strong, nonatomic) NSString *title;
-@property (strong, nonatomic) NSString *cancelButtonTitle;
-@property (strong, nonatomic) NSString *destructiveButtonTitle;
-
 @property (nonatomic) UIActionSheetStyle actionSheetStyle;  // Default is UIActionSheetStyleAutomatic. Ignored if alert is visible
+
+@property (strong, nonatomic) NSString *title;
+
 #warning should setting visibility show and hide the action sheet? This behaviour works for UIWindow
 @property (nonatomic, readonly, getter=isVisible) BOOL visible;
 
@@ -52,6 +51,14 @@ NS_CLASS_AVAILABLE_IOS(2_0) @interface MTZActionSheet : NSObject
 
 
 #pragma mark Configuring Buttons
+
+// The title of the cancel button (stylized and positioned automatically)
+// If nil, the cancel button is not shown.
+@property (strong, nonatomic) NSString *cancelButtonTitle;
+
+// The title of the destructive button (stylized and positioned automatically)
+// If nil, the destructive button is not shown.
+@property (strong, nonatomic) NSString *destructiveButtonTitle;
 
 // This will append a button to the action sheet and call the corresponding selector on the delegate when tapped
 - (void)addButtonWithTitle:(NSString *)title andSelector:(SEL)selector;
