@@ -8,10 +8,12 @@
 
 #import "MTZViewController.h"
 #import "MTZActionSheet.h"
+#import "MTZAlertView.h"
 
-@interface MTZViewController () <MTZActionSheetDelegate>
+@interface MTZViewController () <MTZActionSheetDelegate, MTZAlertViewDelegate>
 
 @property (strong, nonatomic) MTZActionSheet *actionSheet;
+@property (strong, nonatomic) MTZAlertView *alertView;
 
 @end
 
@@ -55,6 +57,7 @@
 	_actionSheet.delegate = self;
 	_actionSheet.cancelButtonTitle = @"Cancel";
 	_actionSheet.destructiveButtonTitle = @"Destructive";
+	[_actionSheet addButtonWithTitle:nil andSelector:nil];
 	[_actionSheet addButtonWithTitle:@"Other Button" andSelector:@selector(tappedOtherButton:)];
 	[_actionSheet addButtonWithTitle:@"Another Button" andSelector:@selector(tappedAnotherButton)];
 	[_actionSheet showInView:self.view];
@@ -103,9 +106,27 @@
 
 - (void)didTapAlertButton:(id)sender
 {
-	NSLog(@"Did tap alert");
+	_alertView = [[MTZAlertView alloc] init];
+	_alertView.title = @"My Alert View Title";
+	_alertView.message = @"My Message";
+	_alertView.delegate = self;
+	_alertView.cancelButtonTitle = @"Cancel";
+	[_alertView addButtonWithTitle:@"Other Button" andSelector:@selector(tappedOtherButton:)];
+	[_alertView addButtonWithTitle:@"Another Button" andSelector:@selector(tappedAnotherButton)];
+	[_alertView show];
+	
+	 [self performSelector:@selector(alertViewAPITest)
+				withObject:nil
+				afterDelay:2.0f];
 }
 
+- (void)alertViewAPITest
+{
+	NSLog(@"TESTING ALERT VIEW");
+}
+
+
+#pragma mark -
 
 - (void)didReceiveMemoryWarning
 {
