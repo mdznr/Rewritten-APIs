@@ -10,6 +10,8 @@
 #import "MTZAction.h"
 #import "UIActionSheet+DelegateFix.h"
 
+@protocol UIActionSheetDelegate;
+
 @interface MTZActionSheet () <UIActionSheetDelegate>
 
 @property (strong, nonatomic) UIActionSheet *actionSheet;
@@ -107,13 +109,13 @@
 	if ( _actionSheet ) return _actionSheet;
 	
 	_actionSheet = [[UIActionSheet alloc] init];
-	[_actionSheet setTitle:_title];
-	[_actionSheet setRetainedDelegate:self];
+	_actionSheet.title = _title;
+	_actionSheet.retainedDelegate = self;
 	
 	// Make sure destructive is always on the top
 	if ( _destructiveButtonTitle ) {
 		[_actionSheet addButtonWithTitle:_destructiveButtonTitle];
-		[_actionSheet setDestructiveButtonIndex:0];
+		_actionSheet.destructiveButtonIndex = 0;
 	}
 	
 	for ( NSString *buttonTitle in _buttonTitles ) {
@@ -123,7 +125,7 @@
 	// Make sure cancel is always on the bottom
 	if ( _cancelButtonTitle ) {
 		[_actionSheet addButtonWithTitle:_cancelButtonTitle];
-		[_actionSheet setCancelButtonIndex:_actionSheet.numberOfButtons-1];
+		_actionSheet.cancelButtonIndex = _actionSheet.numberOfButtons-1;
 	}
 	
 	return _actionSheet;
