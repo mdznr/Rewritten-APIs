@@ -78,7 +78,7 @@
 //	[_actionSheet dismissWithTappedButtonTitle:_actionSheet.cancelButtonTitle animated:YES]; // This shouldn't be necessary
 //	[_actionSheet dismissWithTappedButtonTitle:_actionSheet.destructiveButtonTitle animated:YES]; // This shouldn't be necessary
 //	[_actionSheet dismissWithTappedButtonTitle:@"Cancel" animated:YES]; // This shouldn't be necessary
-	[_actionSheet dismissWithCancel];
+	[_actionSheet dismissWithCancelAnimated:YES];
 }
 
 - (void)actionSheetDidTapDestructiveButton:(MTZActionSheet *)actionSheet
@@ -124,7 +124,13 @@
 
 - (void)alertViewAPITest
 {
-	NSLog(@"TESTING ALERT VIEW");
+	NSLog(@"%@", _alertView.buttonTitles);
+	NSLog(@"%@", _alertView.otherButtonTitles);
+	NSLog(@"%lu", (unsigned long) _alertView.numberOfButtons);
+	NSLog(@"%lu", (unsigned long) _alertView.numberOfOtherButtons);
+//	[_alertView dismissWithTappedButtonTitle:_alertView.cancelButtonTitle animated:YES]; // This shouldn't be necessary
+//	[_alertView dismissWithTappedButtonTitle:@"Cancel" animated:YES]; // This shouldn't be necessary
+	[_alertView dismissWithCancelAnimated:YES];
 }
 
 - (void)alertViewDidTapCancelButton:(MTZAlertView *)alertView
