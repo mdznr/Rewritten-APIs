@@ -72,7 +72,7 @@ NS_CLASS_AVAILABLE_IOS(2_0) @interface MTZAlertView : NSObject
 #pragma mark Dismissing the Alert View
 
 // Hides the alert and behaves like tapping the cancel button
-- (void)dismissWithCancel;
+- (void)dismissWithCancelAnimated:(BOOL)animated;
 
 // Hides the alert. Use this method when you need to explicitly dismiss the alert.
 - (void)dismissWithTappedButtonTitle:(NSString *)buttonTitle animated:(BOOL)animated;
