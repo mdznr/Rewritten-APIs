@@ -79,7 +79,7 @@ NS_CLASS_AVAILABLE_IOS(2_0) @interface MTZActionSheet : NSObject
 #pragma mark Dismissing the Action Sheet
 
 // Hides the alert and behaves like tapping the cancel button
-- (void)dismissWithCancel;
+- (void)dismissWithCancelAnimated:(BOOL)animated;
 
 // Hides the action sheet. Use this method when you need to explicitly dismiss the action sheet.
 - (void)dismissWithTappedButtonTitle:(NSString *)buttonTitle animated:(BOOL)animated;
