@@ -56,10 +56,13 @@
 
 - (NSArray *)buttonTitles
 {
-#warning what happens when _destructiveButtonTitle or _cancelButton title are nil?
 	NSMutableArray *titles = [NSMutableArray arrayWithArray:_buttonTitles];
-	[titles insertObject:_destructiveButtonTitle atIndex:0];
-	[titles addObject:_cancelButtonTitle];
+	if ( _destructiveButtonTitle ) {
+		[titles insertObject:_destructiveButtonTitle atIndex:0];
+	}
+	if ( _cancelButtonTitle ) {
+		[titles addObject:_cancelButtonTitle];
+	}
 	return titles;
 }
 
@@ -91,6 +94,11 @@
 
 - (void)addButtonWithTitle:(NSString *)title andSelector:(SEL)selector
 {
+	if ( title == nil ) {
+		NSLog(@"Button title cannot be nil");
+		return;
+	}
+	
 	// If the title already exists, change it's position and update it's selector
 	if ( [_selectorsForTitles objectForKey:title] ) {
 		[_buttonTitles removeObjectIdenticalTo:title];
@@ -98,7 +106,7 @@
 	
 	[_buttonTitles addObject:title];
 	[_selectorsForTitles setObject:[MTZAction actionWithSelector:selector]
-								 forKey:title];
+							forKey:title];
 }
 
 
@@ -159,7 +167,6 @@
 
 #pragma mark Dismissing the Action Sheet
 
-#warning animated?
 - (void)dismissWithCancelAnimated:(BOOL)animated
 {
 	if ( !_actionSheet ) {
