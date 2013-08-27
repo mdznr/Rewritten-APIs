@@ -111,8 +111,10 @@
 	_alertView.message = @"My Message";
 	_alertView.delegate = self;
 	_alertView.cancelButtonTitle = @"Cancel";
-	[_alertView addButtonWithTitle:@"Other Button" andSelector:@selector(tappedOtherButton:)];
-	[_alertView addButtonWithTitle:@"Another Button" andSelector:@selector(tappedAnotherButton)];
+	[_alertView addButtonWithTitle:@"Other Button"
+					   andSelector:@selector(tappedOtherAlertButton:)];
+	[_alertView addButtonWithTitle:@"Another Button"
+					   andSelector:@selector(tappedAnotherAlertButton)];
 	[_alertView show];
 	
 	 [self performSelector:@selector(alertViewAPITest)
@@ -123,6 +125,21 @@
 - (void)alertViewAPITest
 {
 	NSLog(@"TESTING ALERT VIEW");
+}
+
+- (void)alertViewDidTapCancelButton:(MTZAlertView *)alertView
+{
+	NSLog(@"Alert View (%@) tapped Cancel Button", alertView);
+}
+
+- (void)tappedOtherAlertButton:(id)sender
+{
+	NSLog(@"Tapped Other Alert Button: %@", sender);
+}
+
+- (void)tappedAnotherAlertButton
+{
+	NSLog(@"Tapped Another Alert Button");
 }
 
 
