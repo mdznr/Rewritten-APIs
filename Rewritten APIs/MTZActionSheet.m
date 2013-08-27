@@ -160,10 +160,11 @@
 #pragma mark Dismissing the Action Sheet
 
 #warning animated?
-- (void)dismissWithCancel
+- (void)dismissWithCancelAnimated:(BOOL)animated
 {
 	if ( !_actionSheet ) {
 		NSLog(@"Cannot dismiss MTZActionSheet without it being displayed");
+		return;
 	}
 	
 	NSInteger cancelButtonIndex = [_actionSheet cancelButtonIndex];
@@ -172,13 +173,14 @@
 		NSLog(@"Cannot cancel this action sheet because it doesn't have a cancel button");
 		return;
 	}
-	[_actionSheet dismissWithClickedButtonIndex:cancelButtonIndex animated:YES];
+	[_actionSheet dismissWithClickedButtonIndex:cancelButtonIndex animated:animated];
 }
 
 - (void)dismissWithTappedButtonIndex:(NSInteger)buttonIndex animated:(BOOL)animated
 {
 	if ( !_actionSheet) {
 		NSLog(@"Cannot dismiss MTZActionSheet without it being displayed");
+		return;
 	}
 	
 	[_actionSheet dismissWithClickedButtonIndex:buttonIndex animated:animated];
@@ -188,6 +190,7 @@
 {
 	if ( !_actionSheet) {
 		NSLog(@"Cannot dismiss MTZActionSheet without it being displayed");
+		return;
 	}
 	
 	NSInteger buttonIndex = 0;
