@@ -56,9 +56,10 @@
 
 - (NSArray *)buttonTitles
 {
-#warning what happens when _cancelButtonTitle is nil?
 	NSMutableArray *titles = [NSMutableArray arrayWithArray:_buttonTitles];
-	[titles addObject:_cancelButtonTitle];
+	if ( _cancelButtonTitle ) {
+		[titles addObject:_cancelButtonTitle];
+	}
 	return titles;
 }
 
@@ -89,6 +90,11 @@
 
 - (void)addButtonWithTitle:(NSString *)title andSelector:(SEL)selector
 {
+	if ( title == nil ) {
+		NSLog(@"Button title cannot be nil");
+		return;
+	}
+	
 	// If the title already exists, change it's position and update it's selector
 	if ( [_selectorsForTitles objectForKey:title] ) {
 		[_buttonTitles removeObjectIdenticalTo:title];
