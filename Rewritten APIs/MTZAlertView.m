@@ -108,6 +108,7 @@
 	
 	_alertView = [[UIAlertView alloc] init];
 	_alertView.title = _title;
+	_alertView.message = _message;
 	_alertView.retainedDelegate = self;
 	
 	for ( NSString *buttonTitle in _buttonTitles ) {
@@ -127,5 +128,103 @@
 {
 	[[self alertView] show];
 }
+
+
+#pragma mark Dismissing the Alert View
+
+- (void)dismissWithCancelAnimated:(BOOL)animated
+{
+	if ( !_alertView ) {
+		NSLog(@"Cannot dismiss MTZAlertView without it being displayed");
+		return;
+	}
+	
+	NSInteger cancelButtonIndex = [_alertView cancelButtonIndex];
+	if ( cancelButtonIndex == -1 ) {
+#warning would be nice if UIAlertView did have a API for cancelling
+		NSLog(@"Cannot cancel this alert view because it doesn't have a cancel button");
+		return;
+	}
+	[_alertView dismissWithClickedButtonIndex:cancelButtonIndex animated:animated];
+}
+
+- (void)dismissWithTappedButtonIndex:(NSInteger)buttonIndex animated:(BOOL)animated
+{
+	if ( !_alertView) {
+		NSLog(@"Cannot dismiss MTZAlertView without it being displayed");
+	}
+	[_alertView dismissWithClickedButtonIndex:buttonIndex animated:animated];
+}
+
+- (void)dismissWithTappedButtonTitle:(NSString *)buttonTitle animated:(BOOL)animated
+{
+	if ( !_alertView) {
+		NSLog(@"Cannot dismiss MTZAlertView without it being displayed");
+		return;
+	}
+	
+	NSInteger buttonIndex = 0;
+	if ( [buttonTitle isEqualToString:_cancelButtonTitle] ) {
+		buttonIndex = self.numberOfButtons-1;
+	} else {
+		buttonIndex = [_buttonTitles indexOfObjectIdenticalTo:buttonTitle];
+		if ( buttonIndex == NSNotFound ) {
+			NSLog(@"No button with that title found.");
+			return;
+		}
+	}
+	
+	[_alertView dismissWithClickedButtonIndex:buttonIndex animated:animated];
+}
+
+
+#pragma mark UIAlertViewDelegate
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+	[self callSelectorOnDelegateForIndex:buttonIndex];
+}
+
+- (void)alertView:(UIAlertView *)alertView willDismissWithButtonIndex:(NSInteger)buttonIndex
+{
+	
+}
+
+- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
+{
+	// Alert view is no longer necessary
+	_alertView = nil;
+}
+
+- (void)alertViewCancel:(UIAlertView *)alertView
+{
+	if ( [(NSObject *)_delegate respondsToSelector:@selector(alertViewDidCancel:)] ) {
+		[_delegate alertViewDidCancel:self];
+	}
+	
+	// Alert view is no longer necessary
+	_alertView = nil;
+}
+
+- (void)callSelectorOnDelegateForIndex:(NSInteger)buttonIndex
+{
+	NSInteger otherButtonIndex = buttonIndex;
+	if ( _cancelButtonTitle && buttonIndex == self.numberOfButtons-1 ) {
+		// Tapped on cancel button
+		[_delegate alertViewDidTapCancelButton:self];
+		return;
+	}
+	
+	NSString *buttonTitle = _buttonTitles[otherButtonIndex];
+	
+	SEL selector = ((MTZAction *)_selectorsForTitles[buttonTitle]).selector;
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+	if ( [(NSObject *)_delegate respondsToSelector:selector] ) {
+		[((NSObject *)_delegate) performSelector:selector withObject:self];
+	}
+#pragma clang diagnostic pop
+}
+
 
 @end
