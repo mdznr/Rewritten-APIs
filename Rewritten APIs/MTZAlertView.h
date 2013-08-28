@@ -19,14 +19,14 @@ NS_CLASS_AVAILABLE_IOS(2_0) @interface MTZAlertView : NSObject
 #warning TODO: what kinds of quick initalization methods should be presented?
 - (id)initWithTitle:(NSString *)title;
 - (id)initWithTitle:(NSString *)title andMessage:(NSString *)message;
-+ (id)alertViewWithStyle:(UIAlertViewStyle)alertViewStyle;
++ (id)alertViewWithStyle:(UIAlertViewStyle)style;
 
 
 #pragma mark Properties
 
 @property (strong, nonatomic) id<MTZAlertViewDelegate> delegate;
 
-@property (nonatomic) UIAlertViewStyle alertViewStyle;
+@property (nonatomic) UIAlertViewStyle style;
 
 @property (strong, nonatomic) NSString *title;
 @property (strong, nonatomic) NSString *message;
@@ -102,7 +102,7 @@ NS_CLASS_AVAILABLE_IOS(2_0) @interface MTZAlertView : NSObject
 
 #warning rework the way this works
 // Called after edits in any of the default fields added by the style
-- (BOOL)alertViewShouldEnableFirstOtherButton:(UIAlertView *)alertView;
+//- (BOOL)alertViewShouldEnableFirstOtherButton:(UIAlertView *)alertView;
 #warning should be more like this? (Called for each (non-cancel?) button
 - (BOOL)alertView:(MTZAlertView *)alertView shouldEnableButtonWithTitle:(NSString *)buttonTitle;
 

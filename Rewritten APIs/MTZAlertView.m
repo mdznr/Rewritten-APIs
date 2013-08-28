@@ -19,6 +19,8 @@
 @property (strong, nonatomic) NSMutableArray *buttonTitles;
 @property (strong, nonatomic) NSMutableDictionary *selectorsForTitles;
 
+@property (nonatomic) BOOL cancelButtonOnBottom;
+
 @end
 
 
@@ -53,6 +55,11 @@
 
 
 #pragma mark Properties
+
+- (NSInteger)cancelButtonIndex
+{
+	return _alertView.cancelButtonIndex;
+}
 
 - (NSArray *)buttonTitles
 {
@@ -115,16 +122,29 @@
 	_alertView = [[UIAlertView alloc] init];
 	_alertView.title = _title;
 	_alertView.message = _message;
+	_alertView.alertViewStyle = _style;
 	_alertView.retainedDelegate = self;
 	
-	for ( NSString *buttonTitle in _buttonTitles ) {
-		[_alertView addButtonWithTitle:buttonTitle];
-	}
-	
-	// Make sure cancel is always on the bottom
-	if ( _cancelButtonTitle ) {
-		[_alertView addButtonWithTitle:_cancelButtonTitle];
-		_alertView.cancelButtonIndex = _alertView.numberOfButtons-1;
+	if ( _buttonTitles.count > 1 ) {
+		_cancelButtonOnBottom = YES;
+		// Add all the other buttons
+		for ( NSString *buttonTitle in _buttonTitles ) {
+			[_alertView addButtonWithTitle:buttonTitle];
+		}
+		// Make sure Cancel is on the bottom when more than two buttons
+		if ( _cancelButtonTitle ) {
+			[_alertView addButtonWithTitle:_cancelButtonTitle];
+			_alertView.cancelButtonIndex = _alertView.numberOfButtons-1;
+		}
+	} else {
+		_cancelButtonOnBottom = NO;
+		// Make sure Cancel is on the left when only two buttons
+		if ( _cancelButtonTitle ) {
+			[_alertView addButtonWithTitle:_cancelButtonTitle];
+			_alertView.cancelButtonIndex = 0;
+		}
+		// Add the other button
+		[_alertView addButtonWithTitle:_buttonTitles[0]];
 	}
 	
 	return _alertView;
@@ -145,7 +165,7 @@
 		return;
 	}
 	
-	NSInteger cancelButtonIndex = [_alertView cancelButtonIndex];
+	NSInteger cancelButtonIndex = self.cancelButtonIndex;
 	if ( cancelButtonIndex == -1 ) {
 #warning would be nice if UIAlertView did have a API for cancelling
 		NSLog(@"Cannot cancel this alert view because it doesn't have a cancel button");
@@ -171,9 +191,9 @@
 	
 	NSInteger buttonIndex = 0;
 	if ( [buttonTitle isEqualToString:_cancelButtonTitle] ) {
-		buttonIndex = self.numberOfButtons-1;
+		buttonIndex = [_alertView cancelButtonIndex];
 	} else {
-		buttonIndex = [_buttonTitles indexOfObjectIdenticalTo:buttonTitle];
+		buttonIndex = [self.otherButtonTitles indexOfObjectIdenticalTo:buttonTitle];
 		if ( buttonIndex == NSNotFound ) {
 			NSLog(@"No button with that title found.");
 			return;
@@ -188,6 +208,7 @@
 
 - (BOOL)alertViewShouldEnableFirstOtherButton:(UIAlertView *)alertView
 {
+	NSLog(@"alertViewShouldEnableFirstOtherButton:");
 #warning should be more like this? (Called for each (non-cancel?) button
 //- (BOOL)alertView:(MTZAlertView *)alertView shouldEnableButtonWithTitle:(NSString *)buttonTitle;
 	for ( NSString *buttonTitle in _buttonTitles ) {
@@ -226,13 +247,18 @@
 - (void)callSelectorOnDelegateForIndex:(NSInteger)buttonIndex
 {
 	NSInteger otherButtonIndex = buttonIndex;
-	if ( _cancelButtonTitle && buttonIndex == self.numberOfButtons-1 ) {
-		// Tapped on cancel button
-		[_delegate alertViewDidTapCancelButton:self];
-		return;
+	if ( _cancelButtonTitle ) {
+		if ( buttonIndex == self.cancelButtonIndex ) {
+			// Tapped on cancel button
+			[_delegate alertViewDidTapCancelButton:self];
+			return;
+		}
+		if ( !_cancelButtonOnBottom ) {
+			otherButtonIndex--;
+		}
 	}
 	
-	NSString *buttonTitle = _buttonTitles[otherButtonIndex];
+	NSString *buttonTitle = self.otherButtonTitles[otherButtonIndex];
 	
 	SEL selector = ((MTZAction *)_selectorsForTitles[buttonTitle]).selector;
 #pragma clang diagnostic push
