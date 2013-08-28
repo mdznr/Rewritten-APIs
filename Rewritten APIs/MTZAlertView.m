@@ -186,6 +186,17 @@
 
 #pragma mark UIAlertViewDelegate
 
+- (BOOL)alertViewShouldEnableFirstOtherButton:(UIAlertView *)alertView
+{
+#warning should be more like this? (Called for each (non-cancel?) button
+//- (BOOL)alertView:(MTZAlertView *)alertView shouldEnableButtonWithTitle:(NSString *)buttonTitle;
+	for ( NSString *buttonTitle in _buttonTitles ) {
+		return [_delegate alertView:(MTZAlertView *)alertView shouldEnableButtonWithTitle:buttonTitle];
+	}
+	
+	return YES;
+}
+
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
 	[self callSelectorOnDelegateForIndex:buttonIndex];
