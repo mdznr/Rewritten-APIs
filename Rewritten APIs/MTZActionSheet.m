@@ -248,7 +248,6 @@
 
 - (void)actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex
 {
-	[self callSelectorOnDelegateForIndex:buttonIndex];
 	// Action sheet is no longer necessary
 	_actionSheet = nil;
 }
