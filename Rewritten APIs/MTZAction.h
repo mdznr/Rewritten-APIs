@@ -8,11 +8,11 @@
 
 #import <Foundation/Foundation.h>
 
+typedef void (^Block)();
+
 @interface MTZAction : NSObject
 
 + (MTZAction *)actionWithSelector:(SEL)selector;
-
-@property (nonatomic) SEL selector;
-#warning add block?
++ (MTZAction *)actionWithBlock:(Block)block;
 
 @end
