@@ -17,12 +17,11 @@
 @property (strong, nonatomic) UIAlertView *alertView;
 
 @property (strong, nonatomic) NSMutableArray *buttonTitles;
-@property (strong, nonatomic) NSMutableDictionary *selectorsForTitles;
+@property (strong, nonatomic) NSMutableDictionary *actionsForButtonTitles;
 
 @property (nonatomic) BOOL cancelButtonOnBottom;
 
 @end
-
 
 @implementation MTZAlertView
 
@@ -50,7 +49,7 @@
 - (void)setup
 {
 	_buttonTitles = [[NSMutableArray alloc] initWithCapacity:4];
-	_selectorsForTitles = [[NSMutableDictionary alloc] initWithCapacity:4];
+	_actionsForButtonTitles = [[NSMutableDictionary alloc] initWithCapacity:4];
 }
 
 
@@ -92,24 +91,48 @@
 	return [_alertView isVisible];
 }
 
+#warning need to handle different styles and number of input fields
+- (NSString *)textInInputField
+{
+	return [[(UIAlertView *)self textFieldAtIndex:0] text];
+}
+
 
 #pragma mark Configuring Buttons
 
 - (void)addButtonWithTitle:(NSString *)title andSelector:(SEL)selector
 {
 	if ( title == nil ) {
-		NSLog(@"Button title cannot be nil");
+		NSLog(@"Button title must be non-nil");
 		return;
 	}
 	
 	// If the title already exists, change it's position and update it's selector
-	if ( [_selectorsForTitles objectForKey:title] ) {
+	if ( [_actionsForButtonTitles objectForKey:title] ) {
 		[_buttonTitles removeObjectIdenticalTo:title];
 	}
 	
 	[_buttonTitles addObject:title];
-	[_selectorsForTitles setObject:[MTZAction actionWithSelector:selector]
-							forKey:title];
+	[_actionsForButtonTitles setObject:[MTZAction actionWithSelector:selector
+															onObject:_delegate]
+								forKey:title];
+}
+#warning combine the shared code in these methods
+- (void)addButtonWithTitle:(NSString *)title andBlock:(Block)block
+{
+	if ( title == nil ) {
+		NSLog(@"Button title must be non-nil");
+		return;
+	}
+	
+	// If the title already exists, change it's position and upate it's block
+	if ( [_actionsForButtonTitles objectForKey:title] ) {
+		[_buttonTitles removeObjectIdenticalTo:title];
+	}
+	
+	[_buttonTitles addObject:title];
+	[_actionsForButtonTitles setObject:[MTZAction actionWithBlock:block]
+								forKey:title];
 }
 
 
@@ -220,7 +243,7 @@
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-	[self callSelectorOnDelegateForIndex:buttonIndex];
+	[self performActionForButtonAtIndex:buttonIndex];
 }
 
 - (void)alertView:(UIAlertView *)alertView willDismissWithButtonIndex:(NSInteger)buttonIndex
@@ -244,7 +267,7 @@
 	_alertView = nil;
 }
 
-- (void)callSelectorOnDelegateForIndex:(NSInteger)buttonIndex
+- (void)performActionForButtonAtIndex:(NSInteger)buttonIndex
 {
 	NSInteger otherButtonIndex = buttonIndex;
 	if ( _cancelButtonTitle ) {
@@ -260,13 +283,7 @@
 	
 	NSString *buttonTitle = self.otherButtonTitles[otherButtonIndex];
 	
-	SEL selector = ((MTZAction *)_selectorsForTitles[buttonTitle]).selector;
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
-	if ( [(NSObject *)_delegate respondsToSelector:selector] ) {
-		[((NSObject *)_delegate) performSelector:selector withObject:self];
-	}
-#pragma clang diagnostic pop
+	[(MTZAction *)_actionsForButtonTitles[buttonTitle] performAction];
 }
 
 
