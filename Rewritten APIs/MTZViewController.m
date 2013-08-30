@@ -59,14 +59,15 @@
 	_actionSheet.destructiveButtonTitle = @"Destructive";
 	[_actionSheet addButtonWithTitle:nil andSelector:nil];
 	[_actionSheet addButtonWithTitle:@"Other Button" andSelector:@selector(tappedOtherButton:)];
-	[_actionSheet addButtonWithTitle:@"Another Button" andSelector:@selector(tappedAnotherButton)];
+	[_actionSheet addButtonWithTitle:@"Another Button"
+							andBlock:^{
+								NSLog(@"Tapped Another Button");
+							}];
 	[_actionSheet showInView:self.view];
 	
-	/*
 	[self performSelector:@selector(actionSheetAPITest)
 			   withObject:nil
 			   afterDelay:2.0f];
-	 */
 }
 
 - (void)actionSheetAPITest
@@ -78,7 +79,7 @@
 //	[_actionSheet dismissWithTappedButtonTitle:_actionSheet.cancelButtonTitle animated:YES]; // This shouldn't be necessary
 //	[_actionSheet dismissWithTappedButtonTitle:_actionSheet.destructiveButtonTitle animated:YES]; // This shouldn't be necessary
 //	[_actionSheet dismissWithTappedButtonTitle:@"Cancel" animated:YES]; // This shouldn't be necessary
-	[_actionSheet dismissWithCancelAnimated:YES];
+//	[_actionSheet dismissWithCancelAnimated:YES];
 }
 
 - (void)actionSheetDidTapDestructiveButton:(MTZActionSheet *)actionSheet
@@ -96,11 +97,6 @@
 	NSLog(@"Tapped Other Button: %@", sender);
 }
 
-- (void)tappedAnotherButton
-{
-	NSLog(@"Tapped Another Button");
-}
-
 
 #pragma mark Alert
 
@@ -109,12 +105,16 @@
 	_alertView = [[MTZAlertView alloc] init];
 	_alertView.title = @"My Alert View Title";
 	_alertView.message = @"My Message";
+	_alertView.style = UIAlertViewStyleSecureTextInput;
 	_alertView.delegate = self;
 	_alertView.cancelButtonTitle = @"Cancel";
+	[_alertView addButtonWithTitle:nil andSelector:nil];
 	[_alertView addButtonWithTitle:@"Other Button"
 					   andSelector:@selector(tappedOtherAlertButton:)];
 	[_alertView addButtonWithTitle:@"Another Button"
-					   andSelector:@selector(tappedAnotherAlertButton)];
+						  andBlock:^{
+							  NSLog(@"Tapped Another Alert Button");
+						  }];
 	[_alertView show];
 	
 	 [self performSelector:@selector(alertViewAPITest)
@@ -130,7 +130,7 @@
 	NSLog(@"%lu", (unsigned long) _alertView.numberOfOtherButtons);
 //	[_alertView dismissWithTappedButtonTitle:_alertView.cancelButtonTitle animated:YES]; // This shouldn't be necessary
 //	[_alertView dismissWithTappedButtonTitle:@"Cancel" animated:YES]; // This shouldn't be necessary
-	[_alertView dismissWithCancelAnimated:YES];
+//	[_alertView dismissWithCancelAnimated:YES];
 }
 
 - (void)alertViewDidTapCancelButton:(MTZAlertView *)alertView
@@ -141,11 +141,16 @@
 - (void)tappedOtherAlertButton:(id)sender
 {
 	NSLog(@"Tapped Other Alert Button: %@", sender);
+//	[(UIAlertView *)sender textFieldAtIndex:0];
 }
 
-- (void)tappedAnotherAlertButton
+- (BOOL)alertView:(MTZAlertView *)alertView shouldEnableButtonWithTitle:(NSString *)buttonTitle
 {
-	NSLog(@"Tapped Another Alert Button");
+	if ( [buttonTitle isEqualToString:@"Other Button"] ) {
+		return YES;
+	} else {
+		return NO;
+	}
 }
 
 
