@@ -8,6 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
+#warning this typedef probably shouldn't be defined here. It should come from MTZAction?
+typedef void (^Block)();
+
 @protocol MTZActionSheetDelegate;
 
 #pragma mark -
@@ -62,6 +65,9 @@ NS_CLASS_AVAILABLE_IOS(2_0) @interface MTZActionSheet : NSObject
 
 // This will append a button to the action sheet and call the corresponding selector on the delegate when tapped
 - (void)addButtonWithTitle:(NSString *)title andSelector:(SEL)selector;
+
+// This will append a button to the action sheet and, when tapped, perform the corresponding block
+- (void)addButtonWithTitle:(NSString *)title andBlock:(Block)block;
 
 
 #pragma mark Presenting the Action Sheet

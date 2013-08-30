@@ -17,7 +17,7 @@
 @property (strong, nonatomic) UIActionSheet *actionSheet;
 
 @property (strong, nonatomic) NSMutableArray *buttonTitles;
-@property (strong, nonatomic) NSMutableDictionary *selectorsForTitles;
+@property (strong, nonatomic) NSMutableDictionary *actionsForButtonTitles;
 
 @end
 
@@ -48,7 +48,7 @@
 - (void)setup
 {
 	_buttonTitles = [[NSMutableArray alloc] initWithCapacity:4];
-	_selectorsForTitles = [[NSMutableDictionary alloc] initWithCapacity:4];
+	_actionsForButtonTitles = [[NSMutableDictionary alloc] initWithCapacity:4];
 }
 
 
@@ -100,13 +100,31 @@
 	}
 	
 	// If the title already exists, change it's position and update it's selector
-	if ( [_selectorsForTitles objectForKey:title] ) {
+	if ( [_actionsForButtonTitles objectForKey:title] ) {
 		[_buttonTitles removeObjectIdenticalTo:title];
 	}
 	
 	[_buttonTitles addObject:title];
-	[_selectorsForTitles setObject:[MTZAction actionWithSelector:selector]
-							forKey:title];
+	[_actionsForButtonTitles setObject:[MTZAction actionWithSelector:selector
+															onObject:_delegate]
+								forKey:title];
+}
+
+- (void)addButtonWithTitle:(NSString *)title andBlock:(Block)block
+{
+	if ( title == nil ) {
+		NSLog(@"Button title cannot be nil");
+		return;
+	}
+	
+	// If the title already exists, change it's position and update it's selector
+	if ( [_actionsForButtonTitles objectForKey:title] ) {
+		[_buttonTitles removeObjectIdenticalTo:title];
+	}
+	
+	[_buttonTitles addObject:title];
+	[_actionsForButtonTitles setObject:[MTZAction actionWithBlock:block]
+								forKey:title];
 }
 
 
@@ -224,7 +242,7 @@
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-	[self callSelectorOnDelegateForIndex:buttonIndex];
+	[self performActionForButtonAtIndex:buttonIndex];
 }
 
 - (void)willPresentActionSheet:(UIActionSheet *)actionSheet
@@ -262,7 +280,7 @@
 	_actionSheet = nil;
 }
 
-- (void)callSelectorOnDelegateForIndex:(NSInteger)buttonIndex
+- (void)performActionForButtonAtIndex:(NSInteger)buttonIndex
 {
 	NSInteger otherButtonIndex = buttonIndex;
 	if ( _destructiveButtonTitle ) {
@@ -282,13 +300,7 @@
 	
 	NSString *buttonTitle = _buttonTitles[otherButtonIndex];
 	
-	SEL selector = ((MTZAction *)_selectorsForTitles[buttonTitle]).selector;
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
-	if ( [(NSObject *)_delegate respondsToSelector:selector] ) {
-		[((NSObject *)_delegate) performSelector:selector withObject:self];
-	}
-#pragma clang diagnostic pop
+	[((MTZAction *)_actionsForButtonTitles[buttonTitle]) performAction];
 }
 
 @end
