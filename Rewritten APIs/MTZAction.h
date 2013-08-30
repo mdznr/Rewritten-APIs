@@ -12,7 +12,9 @@ typedef void (^Block)();
 
 @interface MTZAction : NSObject
 
-+ (MTZAction *)actionWithSelector:(SEL)selector;
++ (MTZAction *)actionWithSelector:(SEL)selector onObject:(id)object;
 + (MTZAction *)actionWithBlock:(Block)block;
+
+- (void)performAction;
 
 @end

@@ -10,17 +10,20 @@
 
 @interface MTZAction ()
 
+@property (strong, nonatomic) id object;
 @property (nonatomic) SEL selector;
+
 @property (strong, nonatomic) Block block;
 
 @end
 
 @implementation MTZAction
 
-+ (MTZAction *)actionWithSelector:(SEL)selector
++ (MTZAction *)actionWithSelector:(SEL)selector onObject:(id)object
 {
 	MTZAction *action = [[MTZAction alloc] init];
 	[action setSelector:selector];
+	[action setObject:object];
 	return action;
 }
 
@@ -31,12 +34,18 @@
 	return action;
 }
 
-- (void)act
+- (void)performAction
 {
-#warning needs a delegate?
-	if ( _selector ) {
-		[self performSelector:_selector withObject:self];
+	
+	if ( _object && _selector ) {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+		if ( [(NSObject *)_object respondsToSelector:_selector] ) {
+			[(NSObject *)_object performSelector:_selector withObject:self];
+		}
+#pragma clang diagnostic pop
 	}
+	
 	if ( _block ) {
 		_block(self);
 	}
