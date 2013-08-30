@@ -46,6 +46,24 @@
 	return self;
 }
 
+- (id)initWithTitle:(NSString *)title andMessage:(NSString *)message
+{
+	self = [super init];
+	if ( self ) {
+		_title = title;
+		_message = message;
+		[self setup];
+	}
+	return self;
+}
+
++ (id)alertViewWithStyle:(UIAlertViewStyle)style
+{
+	MTZAlertView *alert = [[MTZAlertView alloc] init];
+	alert.style = style;
+	return alert;
+}
+
 - (void)setup
 {
 	_buttonTitles = [[NSMutableArray alloc] initWithCapacity:4];
