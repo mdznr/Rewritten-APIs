@@ -112,7 +112,22 @@
 #warning need to handle different styles and number of input fields
 - (NSString *)textInInputField
 {
-	return [[(UIAlertView *)self textFieldAtIndex:0] text];
+	switch ( _style ) {
+		case UIAlertViewStylePlainTextInput:
+		case UIAlertViewStyleSecureTextInput:
+			// One field
+			return [_alertView textFieldAtIndex:0].text;
+			break;
+		case UIAlertViewStyleLoginAndPasswordInput:
+			// Two fields
+			return [_alertView textFieldAtIndex:0].text;
+			return [_alertView textFieldAtIndex:1].text;
+			break;
+		case UIAlertViewStyleDefault:
+		default:
+			return nil;
+			break;
+	}
 }
 
 
