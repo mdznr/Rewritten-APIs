@@ -7,7 +7,6 @@
 //
 
 #import "MTZActionSheet.h"
-#import "MTZAction.h"
 #import "UIActionSheet+DelegateFix.h"
 
 @protocol UIActionSheetDelegate;
@@ -105,8 +104,7 @@
 	}
 	
 	[_buttonTitles addObject:title];
-	[_actionsForButtonTitles setObject:[MTZAction actionWithSelector:selector
-															onObject:_delegate]
+	[_actionsForButtonTitles setObject:NSStringFromSelector(selector)
 								forKey:title];
 }
 
@@ -123,8 +121,7 @@
 	}
 	
 	[_buttonTitles addObject:title];
-	[_actionsForButtonTitles setObject:[MTZAction actionWithBlock:block]
-								forKey:title];
+	[_actionsForButtonTitles setObject:block forKey:title];
 }
 
 
@@ -300,7 +297,18 @@
 	
 	NSString *buttonTitle = _buttonTitles[otherButtonIndex];
 	
-	[((MTZAction *)_actionsForButtonTitles[buttonTitle]) performAction];
+	id action = _actionsForButtonTitles[buttonTitle];
+	if ( [(NSObject *)action isKindOfClass:NSString.class]  ) {
+		SEL selector = NSSelectorFromString((NSString *)action);
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+		if ( [(NSObject *)_delegate respondsToSelector:selector] ) {
+			[(NSObject *)_delegate performSelector:selector withObject:self];
+		}
+#pragma clang diagnostic pop
+	} else {
+		((Block)action)();
+	}
 }
 
 @end

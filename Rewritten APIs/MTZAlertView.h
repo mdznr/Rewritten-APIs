@@ -35,7 +35,7 @@ NS_CLASS_AVAILABLE_IOS(2_0) @interface MTZAlertView : NSObject
 @property (strong, nonatomic) NSString *message;
 
 #warning should setting visibility show and hide the alert? This behaviour works for UIWindow
-@property (nonatomic, readonly, getter=isVisible) BOOL visible;
+@property (nonatomic, readonly, getter = isVisible) BOOL visible;
 
 // Get an ordered array of the button titles
 // Includes cancelButtonTitle, if set
@@ -54,6 +54,10 @@ NS_CLASS_AVAILABLE_IOS(2_0) @interface MTZAlertView : NSObject
 // Returns the number of buttons
 // Does not include cancel button, if set
 - (NSUInteger)numberOfOtherButtons;
+
+// Get the text value for the input fields (only available in some styles)
+- (NSString *)textInInputField;
+
 
 
 #pragma mark Configuring Buttons

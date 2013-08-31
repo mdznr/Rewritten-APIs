@@ -141,7 +141,8 @@
 - (void)tappedOtherAlertButton:(id)sender
 {
 	NSLog(@"Tapped Other Alert Button: %@", sender);
-//	[(UIAlertView *)sender textFieldAtIndex:0];
+	[(MTZAlertView *)sender numberOfButtons];
+//	[(MTZAlertView *)sender textInInputField];
 }
 
 - (BOOL)alertView:(MTZAlertView *)alertView shouldEnableButtonWithTitle:(NSString *)buttonTitle

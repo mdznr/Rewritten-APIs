@@ -7,7 +7,6 @@
 //
 
 #import "MTZAlertView.h"
-#import "MTZAction.h"
 #import "UIAlertView+DelegateFix.h"
 
 @protocol UIAlertViewDelegate;
@@ -125,6 +124,7 @@
 			break;
 		case UIAlertViewStyleDefault:
 		default:
+			// No fields
 			return nil;
 			break;
 	}
@@ -146,9 +146,7 @@
 	}
 	
 	[_buttonTitles addObject:title];
-	[_actionsForButtonTitles setObject:[MTZAction actionWithSelector:selector
-															onObject:_delegate]
-								forKey:title];
+	[_actionsForButtonTitles setObject:NSStringFromSelector(selector) forKey:title];
 }
 #warning combine the shared code in these methods
 - (void)addButtonWithTitle:(NSString *)title andBlock:(Block)block
@@ -164,8 +162,7 @@
 	}
 	
 	[_buttonTitles addObject:title];
-	[_actionsForButtonTitles setObject:[MTZAction actionWithBlock:block]
-								forKey:title];
+	[_actionsForButtonTitles setObject:block forKey:title];
 }
 
 
@@ -316,7 +313,18 @@
 	
 	NSString *buttonTitle = self.otherButtonTitles[otherButtonIndex];
 	
-	[(MTZAction *)_actionsForButtonTitles[buttonTitle] performAction];
+	id action = _actionsForButtonTitles[buttonTitle];
+	if ( [(NSObject *)action isKindOfClass:NSString.class]  ) {
+		SEL selector = NSSelectorFromString((NSString *)action);
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+		if ( [(NSObject *)_delegate respondsToSelector:selector] ) {
+			[(NSObject *)_delegate performSelector:selector withObject:self];
+		}
+#pragma clang diagnostic pop
+	} else {
+		((Block)action)();
+	}
 }
 
 
