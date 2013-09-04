@@ -314,7 +314,13 @@
 	NSString *buttonTitle = self.otherButtonTitles[otherButtonIndex];
 	
 	id action = _actionsForButtonTitles[buttonTitle];
+	// Selector
 	if ( [(NSObject *)action isKindOfClass:NSString.class]  ) {
+		if ( !_delegate ) {
+			NSLog(@"Delegate on MTZAlertView must be non-nil. Selector for button with title \"%@\" not performed.", buttonTitle);
+			return;
+		}
+		
 		SEL selector = NSSelectorFromString((NSString *)action);
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Warc-performSelector-leaks"
@@ -322,7 +328,9 @@
 			[(NSObject *)_delegate performSelector:selector withObject:self];
 		}
 #pragma clang diagnostic pop
-	} else {
+	}
+	// Block
+	else {
 		((Block)action)();
 	}
 }
