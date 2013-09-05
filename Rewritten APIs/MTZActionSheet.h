@@ -36,8 +36,8 @@ NS_CLASS_AVAILABLE_IOS(2_0) @interface MTZActionSheet : NSObject
 /// @discussion When adding buttons with selectors, those selectors are performed on this.
 @property (strong, nonatomic) id<MTZActionSheetDelegate> delegate;
 
-/// The receiver’s presentation style. Default is UIActionSheetStyleAutomatic.
-/// @discussion This property determines how the action sheet looks when it is presented. For a list of possible values, see the UIActionSheetStyle constants.
+/// The receiver’s presentation style. Default is @c UIActionSheetStyleAutomatic.
+/// @discussion This property determines how the action sheet looks when it is presented. For a list of possible values, see the @c UIActionSheetStyle constants.
 /// @discussion Ignored if action sheet is already visible.
 @property (nonatomic) UIActionSheetStyle style;
 
@@ -48,12 +48,12 @@ NS_CLASS_AVAILABLE_IOS(2_0) @interface MTZActionSheet : NSObject
 /// A Boolean value that indicates whether the receiver is displayed. (read-only)
 @property (nonatomic, readonly, getter=isVisible) BOOL visible;
 
-/// An ordered array of the button titles.
-/// Includes cancelButtonTitle and destructiveButtonTitle, if set.
+/// An ordered (top to bottom) array of the button titles.
+/// Includes @c cancelButtonTitle and @c destructiveButtonTitle, if set.
 - (NSArray *)buttonTitles;
 
 /// An ordered array of the button titles.
-/// Does not include cancelButtonTitle and destructiveButtonTitle.
+/// Does not include @c cancelButtonTitle and @c destructiveButtonTitle.
 - (NSArray *)otherButtonTitles;
 
 #warning do we even need this API?
@@ -92,23 +92,24 @@ NS_CLASS_AVAILABLE_IOS(2_0) @interface MTZActionSheet : NSObject
 
 /// Displays an action sheet that originates from the specified tab bar.
 /// @param view The tab bar from which the action sheet originates.
-/// @discussion The appearance of the action sheet is animated. On iPad, this method centers the action sheet in the middle of the screen. Generally, the showFromRect:inView:animated: method should be used instead when trying to presenting an action sheet relative to a tab bar in an iPad application.
+/// @discussion The appearance of the action sheet is animated. On iPad, this method centers the action sheet in the middle of the screen. Generally, the @c  showFromRect:inView:animated: method should be used instead when trying to presenting an action sheet relative to a tab bar in an iPad application.
 - (void)showFromTabBar:(UITabBar *)view;
 
 /// Displays an action sheet that originates from the specified toolbar.
 /// @param view The toolbar from which the action sheet originates.
-/// @discussion The appearance of the action sheet is animated. On iPad, this method centers the action sheet in the middle of the screen. Generally, if you want to present an action sheet relative to a toolbar in an iPad application, you should use the showFromBarButtonItem:animated: method instead. Using this method, if style is UIActionSheetStyleAutomatic, UIActionSheetStyleDefault is used.
+/// @discussion The appearance of the action sheet is animated. On iPad, this method centers the action sheet in the middle of the screen. Generally, if you want to present an action sheet relative to a toolbar in an iPad application, you should use the @c showFromBarButtonItem:animated: method instead.
+/// @discussion Using this method, if style is @c UIActionSheetStyleAutomatic, @c UIActionSheetStyleDefault is used.
 - (void)showFromToolbar:(UIToolbar *)view;
 
 /// Displays an action sheet that originates from the specified view.
 /// @param view The view from which the action sheet originates.
-/// @discussion The appearance of the action sheet is animated. On iPad, this method centers the action sheet in the middle of the screen. Generally, if you want to present an action sheet in an iPad application, you should use the showFromRect:inView:animated: method to display the action sheet instead.
-/// @discussion Using this method, if style is UIActionSheetStyleAutomatic, UIActionSheetStyleDefault is used.
+/// @discussion The appearance of the action sheet is animated. On iPad, this method centers the action sheet in the middle of the screen. Generally, if you want to present an action sheet in an iPad application, you should use the @c showFromRect:inView:animated: method to display the action sheet instead.
+/// @discussion Using this method, if style is @c UIActionSheetStyleAutomatic, @c UIActionSheetStyleDefault is used.
 - (void)showInView:(UIView *)view;
 
 /// Displays an action sheet that originates from the specified bar button item.
 /// @param item The bar button item from which the action sheet originates.
-/// @param animated Specify YES to animate the presentation of the action sheet or NO to present it immediately without any animation effects.
+/// @param animated Specify @c YES to animate the presentation of the action sheet or @c NO to present it immediately without any animation effects.
 - (void)showFromBarButtonItem:(UIBarButtonItem *)item animated:(BOOL)animated NS_AVAILABLE_IOS(3_2);
 
 /// Displays an action sheet that originates from the specified view.
@@ -116,7 +117,7 @@ NS_CLASS_AVAILABLE_IOS(2_0) @interface MTZActionSheet : NSObject
 /// @param view
 /// @param animated
 /// @discussion On iPad, this method displays the action sheet in a popover whose arrow points to the specified rectangle of the view. The popover does not overlap the specified rectangle.
-/// @discussion Using this method, if style is UIActionSheetStyleAutomatic, UIActionSheetStyleDefault is used.
+/// @discussion Using this method, if style is @c UIActionSheetStyleAutomatic, @c UIActionSheetStyleDefault is used.
 - (void)showFromRect:(CGRect)rect inView:(UIView *)view animated:(BOOL)animated NS_AVAILABLE_IOS(3_2);
 
 

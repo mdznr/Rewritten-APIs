@@ -44,7 +44,7 @@ NS_CLASS_AVAILABLE_IOS(2_0) @interface MTZAlertView : NSObject
 @property (strong, nonatomic) id<MTZAlertViewDelegate> delegate;
 
 /// The kind of alert displayed to the user.
-/// @discussion This property determines how the alert view looks when it is presented. For a list of possible values, see the UIAlertViewStyle constants.
+/// @discussion This property determines how the alert view looks when it is presented. For a list of possible values, see the @c UIAlertViewStyle constants.
 @property (nonatomic) UIAlertViewStyle style NS_AVAILABLE_IOS(5_0);
 
 /// The string that appears in the receiver’s title bar.
@@ -58,11 +58,11 @@ NS_CLASS_AVAILABLE_IOS(2_0) @interface MTZAlertView : NSObject
 @property (nonatomic, readonly, getter = isVisible) BOOL visible;
 
 /// An ordered array of the button titles.
-/// Includes cancelButtonTitle, if set.
+/// Includes @c cancelButtonTitle, if set.
 - (NSArray *)buttonTitles;
 
 /// An ordered array of the button titles.
-/// Does not include cancelButtonTitle.
+/// Does not include @c cancelButtonTitle.
 - (NSArray *)otherButtonTitles;
 
 #warning do we even need this API?
@@ -78,10 +78,10 @@ NS_CLASS_AVAILABLE_IOS(2_0) @interface MTZAlertView : NSObject
 #warning should have unique methods for each kind of style?
 #warning or should return NSDictionary with field type (e.g. "password") as key
 /// The text value for the input fields (only available in some styles)
-/// @discussion UIAlertViewStyleDefault will have no input fields and will always return nil
-/// @discussion UIAlertViewStylePlainTextInput will have one input field
-/// @discussion UIAlertViewStyleSecureTextInput will have one input field
-/// @discussion UIAlertViewStyleLoginAndPasswordInput will have two input fields.
+/// @discussion @c UIAlertViewStyleDefault will have no input fields and will always return nil
+/// @discussion @c UIAlertViewStylePlainTextInput will have one input field
+/// @discussion @c UIAlertViewStyleSecureTextInput will have one input field
+/// @discussion @c UIAlertViewStyleLoginAndPasswordInput will have two input fields.
 - (NSString *)textInInputField NS_AVAILABLE_IOS(5_0);
 
 
@@ -111,14 +111,14 @@ NS_CLASS_AVAILABLE_IOS(2_0) @interface MTZAlertView : NSObject
 #pragma mark Dismissing the Alert View
 
 /// Dismisses the receiver as if the user tapped the cancel button, optionally with animation.
-/// This does not work if cancelButtonTitle is not set.
+/// This does not work if @c cancelButtonTitle is not set.
 /// @param animated YES if the receiver should be removed by animating it first; otherwise, NO if it should be removed immediately with no animation.
 /// @discussion In iOS 4.0, you may want to call this method whenever your application moves to the background. An alert view is not dismissed automatically when an application moves to the background. This behavior differs from previous versions of the operating system, where they were canceled automatically when the application was terminated. Dismissing the alert view gives your application a chance to save changes or abort the operation and perform any necessary cleanup in case your application is terminated later.
 - (void)dismissWithCancelAnimated:(BOOL)animated;
 
 /// Dismisses the receiver, optionally with animation. This should only be used when explicity dismissing the alert is absolutely necessary.
 /// @param buttonTitle The title of the button that was tapped just before invoking this method.
-/// @param animated YES if the receiver should be removed by animating it first; otherwise, NO if it should be removed immediately with no animation.
+/// @param animated @c YES if the receiver should be removed by animating it first; otherwise, @c NO if it should be removed immediately with no animation.
 /// @discussion In iOS 4.0, you may want to call this method whenever your application moves to the background. An alert view is not dismissed automatically when an application moves to the background. This behavior differs from previous versions of the operating system, where they were canceled automatically when the application was terminated. Dismissing the alert view gives your application a chance to save changes or abort the operation and perform any necessary cleanup in case your application is terminated later.
 - (void)dismissWithTappedButtonTitle:(NSString *)buttonTitle animated:(BOOL)animated;
 
@@ -146,19 +146,18 @@ NS_CLASS_AVAILABLE_IOS(2_0) @interface MTZAlertView : NSObject
 /// @discussion Called before animation and showing alert
 - (void)willPresentAlertView:(MTZAlertView *)alertView;
 
-/// Sent to the delegate after an alert view is presented to the user.
 /// @param alertView The alert view that was displayed.
-/// @discussion Called after animation of showing alert
+/// @discussion Sent to the delegate after an alert view is presented to the user.
 - (void)didPresentAlertView:(MTZAlertView *)alertView;
 
 #warning rework the way this works
 // Called after edits in any of the default fields added by the style
 //- (BOOL)alertViewShouldEnableFirstOtherButton:(UIAlertView *)alertView;
 #warning should be more like this? (Called for each (non-cancel?) button
-/// Sent to the delegate to determine whether a button (with a certain title) on the alert should be enabled.
+
 /// @param alertView The alert view that is being configured.
 /// @param buttonTitle The title of the button that should or shouldn't be enabled.
-/// @return YES if the button should be enabled, NO if the button should be disabled.
+/// @return @c YES if the button should be enabled, @c NO if the button should be disabled.
 - (BOOL)alertView:(MTZAlertView *)alertView shouldEnableButtonWithTitle:(NSString *)buttonTitle;
 
 
@@ -167,7 +166,7 @@ NS_CLASS_AVAILABLE_IOS(2_0) @interface MTZAlertView : NSObject
 #warning @discussion is incorrect. Did cancel and will cancel?
 /// Sent to the delegate when an alert view has been canceled.
 /// @param alertView The alert view that did get canceled.
-/// @discussion This is sent to the delegate when an alert is canceled (e.g. the user clicks the Home button). This is not called when the user clicks the cancel button. If the alert view’s delegate does not implement this method, clicking the cancel button is simulated and the alert view is dismissed. Implement this method if some actions need to be performed before an alert view is canceled. An alert view can be canceled at any time by the system—for example, when the user taps the Home button. The alertView:willDismissWithButtonIndex: and alertView:didDismissWithButtonIndex: methods are invoked after this method.
+/// @discussion This is sent to the delegate when an alert is canceled (e.g. the user clicks the Home button). This is not called when the user clicks the cancel button. If the alert view’s delegate does not implement this method, clicking the cancel button is simulated and the alert view is dismissed. Implement this method if some actions need to be performed before an alert view is canceled. An alert view can be canceled at any time by the system—for example, when the user taps the Home button. The @c alertView:willDismissWithButtonIndex: and @c alertView:didDismissWithButtonIndex: methods are invoked after this method.
 - (void)alertViewDidCancel:(MTZAlertView *)alertView;
 
 

@@ -192,7 +192,7 @@
 	
 	NSInteger cancelButtonIndex = [_actionSheet cancelButtonIndex];
 	if ( cancelButtonIndex == -1 ) {
-#warning would be nice if UIActionSheet did have a API for cancelling
+#warning would be nice if UIActionSheet did have API for cancelling
 		NSLog(@"Cannot cancel this action sheet because it doesn't have a cancel button");
 		return;
 	}
