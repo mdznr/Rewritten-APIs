@@ -133,6 +133,7 @@
 	
 	_actionSheet = [[UIActionSheet alloc] init];
 	_actionSheet.title = _title;
+	_actionSheet.actionSheetStyle = _style;
 	_actionSheet.retainedDelegate = self;
 	
 	// Make sure destructive is always on the top
