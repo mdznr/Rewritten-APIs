@@ -123,7 +123,6 @@ NS_CLASS_AVAILABLE_IOS(2_0) @interface MTZActionSheet : NSObject
 
 #pragma mark Dismissing the Action Sheet
 
-#warning fix discussion
 /// Dismisses the action sheet, as if the user tapped the cancel button, immediately using an optional animation.
 /// @param animated Specify YES to animate the dismissal of the action sheet or NO to remove the action sheet without an animation.
 /// @discussion You can use this method to dismiss the action sheet programmatically as needed. The action sheet also calls this method itself in response to the user tapping one of the buttons in the action sheet.

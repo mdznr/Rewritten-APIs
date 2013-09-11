@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C94D45F017DA2A5400F6ADA7 /* Rewritten_APIsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C94D45EF17DA2A5400F6ADA7 /* Rewritten_APIsTests.m */; };
 		C9DA9D6317C7C6F500BFC6E4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9DA9D6217C7C6F500BFC6E4 /* Foundation.framework */; };
 		C9DA9D6517C7C6F500BFC6E4 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9DA9D6417C7C6F500BFC6E4 /* CoreGraphics.framework */; };
 		C9DA9D6717C7C6F500BFC6E4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9DA9D6617C7C6F500BFC6E4 /* UIKit.framework */; };
@@ -21,7 +22,6 @@
 		C9DA9D8617C7C6F500BFC6E4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9DA9D6217C7C6F500BFC6E4 /* Foundation.framework */; };
 		C9DA9D8717C7C6F500BFC6E4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9DA9D6617C7C6F500BFC6E4 /* UIKit.framework */; };
 		C9DA9D8F17C7C6F500BFC6E4 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C9DA9D8D17C7C6F500BFC6E4 /* InfoPlist.strings */; };
-		C9DA9D9117C7C6F500BFC6E4 /* Rewritten_APIsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C9DA9D9017C7C6F500BFC6E4 /* Rewritten_APIsTests.m */; };
 		C9DA9D9C17C7CACE00BFC6E4 /* MTZActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = C9DA9D9B17C7CACE00BFC6E4 /* MTZActionSheet.m */; };
 		C9DA9DAB17C8172800BFC6E4 /* UIActionSheet+DelegateFix.m in Sources */ = {isa = PBXBuildFile; fileRef = C9DA9DAA17C8172800BFC6E4 /* UIActionSheet+DelegateFix.m */; };
 		C9DA9DF517CA7ED600BFC6E4 /* MTZAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = C9DA9DF417CA7ED600BFC6E4 /* MTZAlertView.m */; };
@@ -39,6 +39,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C94D45EF17DA2A5400F6ADA7 /* Rewritten_APIsTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Rewritten_APIsTests.m; sourceTree = "<group>"; };
 		C9DA9D5F17C7C6F500BFC6E4 /* Rewritten APIs.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Rewritten APIs.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9DA9D6217C7C6F500BFC6E4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		C9DA9D6417C7C6F500BFC6E4 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -58,7 +59,6 @@
 		C9DA9D8417C7C6F500BFC6E4 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		C9DA9D8C17C7C6F500BFC6E4 /* Rewritten APIsTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Rewritten APIsTests-Info.plist"; sourceTree = "<group>"; };
 		C9DA9D8E17C7C6F500BFC6E4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		C9DA9D9017C7C6F500BFC6E4 /* Rewritten_APIsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Rewritten_APIsTests.m; sourceTree = "<group>"; };
 		C9DA9D9A17C7CACE00BFC6E4 /* MTZActionSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTZActionSheet.h; sourceTree = "<group>"; };
 		C9DA9D9B17C7CACE00BFC6E4 /* MTZActionSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTZActionSheet.m; sourceTree = "<group>"; };
 		C9DA9DA917C8172800BFC6E4 /* UIActionSheet+DelegateFix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIActionSheet+DelegateFix.h"; sourceTree = "<group>"; };
@@ -153,7 +153,7 @@
 		C9DA9D8A17C7C6F500BFC6E4 /* Rewritten APIsTests */ = {
 			isa = PBXGroup;
 			children = (
-				C9DA9D9017C7C6F500BFC6E4 /* Rewritten_APIsTests.m */,
+				C94D45EF17DA2A5400F6ADA7 /* Rewritten_APIsTests.m */,
 				C9DA9D8B17C7C6F500BFC6E4 /* Supporting Files */,
 			);
 			path = "Rewritten APIsTests";
@@ -312,7 +312,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C9DA9D9117C7C6F500BFC6E4 /* Rewritten_APIsTests.m in Sources */,
+				C94D45F017DA2A5400F6ADA7 /* Rewritten_APIsTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

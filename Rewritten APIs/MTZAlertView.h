@@ -82,7 +82,7 @@ NS_CLASS_AVAILABLE_IOS(2_0) @interface MTZAlertView : NSObject
 /// @discussion @c UIAlertViewStylePlainTextInput will have one input field
 /// @discussion @c UIAlertViewStyleSecureTextInput will have one input field
 /// @discussion @c UIAlertViewStyleLoginAndPasswordInput will have two input fields.
-- (NSString *)textInInputField NS_AVAILABLE_IOS(5_0);
+- (NSDictionary *)inputFieldValues NS_AVAILABLE_IOS(5_0);
 
 
 #pragma mark Configuring Buttons

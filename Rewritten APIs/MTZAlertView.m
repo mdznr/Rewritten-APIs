@@ -108,19 +108,29 @@
 	return [_alertView isVisible];
 }
 
-#warning need to handle different styles and number of input fields
-- (NSString *)textInInputField
+typedef enum {
+	PlainTextInput,
+	SecureTextInput,
+	LoginInput,
+	PasswordInput
+} MTZAlertViewInputField;
+
+- (NSDictionary *)inputFieldValues
 {
+#warning should PlainText and SecureText have different keys?
 	switch ( _style ) {
 		case UIAlertViewStylePlainTextInput:
+			// One Field
+			return @{@"PlainTextInput":	[_alertView textFieldAtIndex:0].text};
+			break;
 		case UIAlertViewStyleSecureTextInput:
 			// One field
-			return [_alertView textFieldAtIndex:0].text;
+			return @{@"SecureTextInput": [_alertView textFieldAtIndex:0].text};
 			break;
 		case UIAlertViewStyleLoginAndPasswordInput:
 			// Two fields
-			return [_alertView textFieldAtIndex:0].text;
-			return [_alertView textFieldAtIndex:1].text;
+			return @{@"LoginInput": [_alertView textFieldAtIndex:0].text,
+					 @"PasswordInput": [_alertView textFieldAtIndex:1].text};
 			break;
 		case UIAlertViewStyleDefault:
 		default:
@@ -168,6 +178,8 @@
 
 #pragma mark Presenting the Alert View
 
+/// Create a UIAlertView with properties
+/// @return A newly created UIAlertView with title, message, alertViewStyle, and buttons
 - (UIAlertView *)alertView
 {
 	if ( _alertView ) return _alertView;

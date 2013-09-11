@@ -45,9 +45,9 @@
 	
 	[av show];
 	
-//	XCTAssertEqualObjects(av.title, _title, @"Titles do no match");
-//	XCTAssertEqualObjects(av.message, _message, @"Messages do not match");
-//	XCTAssertEqual(av.style, _style, @"Styles do not match");
+	XCTAssertEqualObjects(av.title, _title, @"Titles do no match");
+	XCTAssertEqualObjects(av.message, _message, @"Messages do not match");
+	XCTAssertEqual(av.style, _style, @"Styles do not match");
 }
 
 - (void)testAlertInitWithTitle
@@ -59,9 +59,9 @@
 	
 	[av show];
 	
-//	XCTAssertEqualObjects(av.title, _title, @"Titles do not match");
-//	XCTAssertEqualObjects(av.message, _message, @"Messages do not match");
-//	XCTAssertEqual(av.style, _style, @"Styles do not match");
+	XCTAssertEqualObjects(av.title, _title, @"Titles do not match");
+	XCTAssertEqualObjects(av.message, _message, @"Messages do not match");
+	XCTAssertEqual(av.style, _style, @"Styles do not match");
 }
 
 - (void)testAlertInitWithTitleAndMessage
@@ -73,9 +73,9 @@
 	
 	[av show];
 	
-//	XCTAssertEqualObjects(av.title, _title, @"Titles do not match");
-//	XCTAssertEqualObjects(av.message, _message, @"Messages do not match");
-//	XCTAssertEqual(av.style, _style, @"Styles do not match");
+	XCTAssertEqualObjects(av.title, _title, @"Titles do not match");
+	XCTAssertEqualObjects(av.message, _message, @"Messages do not match");
+	XCTAssertEqual(av.style, _style, @"Styles do not match");
 }
 
 @end
