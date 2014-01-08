@@ -74,8 +74,6 @@
 {
 	NSLog(@"%@", _actionSheet.buttonTitles);
 	NSLog(@"%@", _actionSheet.otherButtonTitles);
-	NSLog(@"%lu", (unsigned long) _actionSheet.numberOfButtons);
-	NSLog(@"%lu", (unsigned long) _actionSheet.numberOfOtherButtons);
 //	[_actionSheet dismissWithTappedButtonTitle:_actionSheet.cancelButtonTitle animated:YES]; // This shouldn't be necessary
 //	[_actionSheet dismissWithTappedButtonTitle:_actionSheet.destructiveButtonTitle animated:YES]; // This shouldn't be necessary
 //	[_actionSheet dismissWithTappedButtonTitle:@"Cancel" animated:YES]; // This shouldn't be necessary
@@ -126,8 +124,6 @@
 {
 	NSLog(@"%@", _alertView.buttonTitles);
 	NSLog(@"%@", _alertView.otherButtonTitles);
-	NSLog(@"%lu", (unsigned long) _alertView.numberOfButtons);
-	NSLog(@"%lu", (unsigned long) _alertView.numberOfOtherButtons);
 //	[_alertView dismissWithTappedButtonTitle:_alertView.cancelButtonTitle animated:YES]; // This shouldn't be necessary
 //	[_alertView dismissWithTappedButtonTitle:@"Cancel" animated:YES]; // This shouldn't be necessary
 //	[_alertView dismissWithCancelAnimated:YES];
@@ -141,7 +137,6 @@
 - (void)tappedOtherAlertButton:(id)sender
 {
 	NSLog(@"Tapped Other Alert Button: %@", sender);
-	[(MTZAlertView *)sender numberOfButtons];
 //	[(MTZAlertView *)sender textInInputField];
 }
 
