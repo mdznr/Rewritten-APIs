@@ -13,7 +13,7 @@ typedef void (^ActionBlock)();
 
 
 /*
- Keys for various possible text input fields in alert view
+ Keys for various possible text input fields in an alert view for use @c inputFieldValues.
  */
 
 /// The string constant for the key to get the value of text in an alert view of style @c UIAlertViewStylePlainTextInput.
