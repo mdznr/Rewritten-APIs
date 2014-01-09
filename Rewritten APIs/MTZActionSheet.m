@@ -85,6 +85,8 @@
 
 - (BOOL)isVisible
 {
+	if ( !_actionSheet ) return NO;
+	
 	return [_actionSheet isVisible];
 }
 
@@ -174,28 +176,44 @@
 	return _actionSheet;
 }
 
+// Ensure that the action sheet should be presented and the user can interact with it to dismiss it
+- (BOOL)shouldShowActionSheet
+{
+	if ( [self numberOfButtons] < 1 ) {
+		NSLog(@"Error: Will not show action sheet with no buttons as it is not dismissable.");
+		return NO;
+	}
+	
+	return YES;
+}
+
 - (void)showFromTabBar:(UITabBar *)view
 {
+	if ( ![self shouldShowActionSheet] ) return;
 	[[self actionSheet] showFromTabBar:view];
 }
 
 - (void)showFromToolbar:(UIToolbar *)view
 {
+	if ( ![self shouldShowActionSheet] ) return;
 	[[self actionSheet] showFromToolbar:view];
 }
 
 - (void)showInView:(UIView *)view
 {
+	if ( ![self shouldShowActionSheet] ) return;
 	[[self actionSheet] showInView:view];
 }
 
 - (void)showFromBarButtonItem:(UIBarButtonItem *)item animated:(BOOL)animated
 {
+	if ( ![self shouldShowActionSheet] ) return;
 	[[self actionSheet] showFromBarButtonItem:item animated:animated];
 }
 
 - (void)showFromRect:(CGRect)rect inView:(UIView *)view animated:(BOOL)animated
 {
+	if ( ![self shouldShowActionSheet] ) return;
 	[[self actionSheet] showFromRect:rect inView:view animated:animated];
 }
 
@@ -204,7 +222,7 @@
 
 - (void)dismissWithCancelAnimated:(BOOL)animated
 {
-	if ( !_actionSheet ) {
+	if ( !_actionSheet || !_actionSheet.visible ) {
 		NSLog(@"Cannot dismiss MTZActionSheet without it being displayed");
 		return;
 	}
@@ -220,7 +238,7 @@
 
 - (void)dismissWithTappedButtonIndex:(NSInteger)buttonIndex animated:(BOOL)animated
 {
-	if ( !_actionSheet) {
+	if ( !_actionSheet || !_actionSheet.visible ) {
 		NSLog(@"Cannot dismiss MTZActionSheet without it being displayed");
 		return;
 	}
@@ -230,7 +248,7 @@
 
 - (void)dismissWithTappedButtonTitle:(NSString *)buttonTitle animated:(BOOL)animated
 {
-	if ( !_actionSheet) {
+	if ( !_actionSheet || !_actionSheet.visible ) {
 		NSLog(@"Cannot dismiss MTZActionSheet without it being displayed");
 		return;
 	}
