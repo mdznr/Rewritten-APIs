@@ -134,12 +134,33 @@ NSString * const kMTZAlertViewPasswordInput = @"MTZAlertViewPasswordInput";
 
 - (void)addButtonWithTitle:(NSString *)title andSelector:(SEL)selector
 {
+	// Check for nil values
+	if ( !title ) {
+		NSLog(@"Error: Unable to add button with nil title.");
+		return;
+	} else if ( !selector ) {
+		NSLog(@"Error: Unable to add button with nil selector.");
+		return;
+	}
+	
 	[self addButtonWithTitle:title];
 	[__actionsForButtonTitles setObject:NSStringFromSelector(selector) forKey:title];
 }
 
 - (void)addButtonWithTitle:(NSString *)title andBlock:(ActionBlock)block
 {
+	// Check for nil title
+	if ( !title ) {
+		NSLog(@"Error: Unable to add button with nil title.");
+		return;
+	}
+	
+	// Check for no block
+	if ( !block ) {
+		// Create empty block
+		block = ^{};
+	}
+	
 	[self addButtonWithTitle:title];
 	[__actionsForButtonTitles setObject:block forKey:title];
 }
