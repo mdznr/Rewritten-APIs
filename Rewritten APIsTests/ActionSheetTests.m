@@ -10,7 +10,7 @@
 
 #import "MTZActionSheet.h"
 
-@interface ActionSheetTests : XCTestCase
+@interface ActionSheetTests : XCTestCase <MTZActionSheetDelegate>
 
 // Standard action sheet to start with
 @property (strong, nonatomic) MTZActionSheet *as;
@@ -59,23 +59,72 @@
     [super tearDown];
 }
 
+
+#pragma mark Creating Action Sheets
+
 - (void)testActionSheetInit
 {
 	MTZActionSheet *as = [[MTZActionSheet alloc] init];
 	
-	as.title = _title;
-	XCTAssertEqualObjects(as.title, _title, @"Titles do no match");
-	
-	as.style = _style;
-	XCTAssertEqual(as.style, _style, @"Styles do not match");
+	XCTAssertNotNil(as, @"Action sheet initialization returned nil");
 }
 
 - (void)testActionSheetInitWithTitle
 {
 	MTZActionSheet *as = [[MTZActionSheet alloc] initWithTitle:_title];
 	
+	XCTAssertNotNil(as, @"Action sheet initialization returned nil");
 	XCTAssertEqualObjects(as.title, _title, @"Titles do no match");
 }
+
+
+#pragma mark Properties
+
+- (void)testActionSheetDelegateProperty
+{
+	MTZActionSheet *as = [[MTZActionSheet alloc] init];
+	as.delegate = self;
+	
+	XCTAssertEqual(as.delegate, self, @"Delegates do not match");
+}
+
+- (void)testActionSheetStyleProperty
+{
+	MTZActionSheet *as = [[MTZActionSheet alloc] init];
+	as.style = _style;
+	
+	XCTAssertEqual(as.style, _style, @"Styles do not match");
+}
+
+- (void)testActionSheetTitleProperty
+{
+	MTZActionSheet *as = [[MTZActionSheet alloc] init];
+	as.title = _title;
+	
+	XCTAssertEqualObjects(as.title, _title, @"Titles do no match");
+}
+
+- (void)testActionSheetVisibleProperty
+{
+	_as.cancelButtonTitle = @"Cancel";
+	
+	// Nothing
+	XCTAssertEqual(_as.visible, NO, @"Action sheet should not be visible yet");
+	
+	// Show
+	[_as showInView:_view];
+	XCTAssertEqual(_as.visible, YES, @"Action sheet should now be visible");
+	
+	// Dismiss
+	[_as dismissWithCancelAnimated:YES];
+	XCTAssertEqual(_as.visible, NO, @"Action sheet should no longer be visible");
+}
+
+
+#pragma mark Configuring Buttons
+
+
+#pragma mark Presenting the Action Sheet
 
 - (void)testPresentedActionSheetTitle
 {
@@ -100,5 +149,19 @@
 	UIActionSheet *actionSheet = (UIActionSheet *) [_as valueForKey:@"actionSheet"];
 	XCTAssertEqualObjects(actionSheet.title, _title, @"Titles do not match");
 }
+
+
+#pragma mark Dismissing the Action Sheet
+
+
+#pragma mark - Delegate
+
+#pragma mark Responding to Actions
+
+
+#pragma mark Customizing Behavior
+
+
+#pragma mark Canceling
 
 @end
