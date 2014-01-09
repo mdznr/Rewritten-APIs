@@ -7,7 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		C94D45F017DA2A5400F6ADA7 /* Rewritten_APIsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C94D45EF17DA2A5400F6ADA7 /* Rewritten_APIsTests.m */; };
+		C94D45F017DA2A5400F6ADA7 /* AlertViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C94D45EF17DA2A5400F6ADA7 /* AlertViewTests.m */; };
+		C9604F84187E232400190707 /* ActionSheetTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C9604F83187E232400190707 /* ActionSheetTests.m */; };
 		C9DA9D6317C7C6F500BFC6E4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9DA9D6217C7C6F500BFC6E4 /* Foundation.framework */; };
 		C9DA9D6517C7C6F500BFC6E4 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9DA9D6417C7C6F500BFC6E4 /* CoreGraphics.framework */; };
 		C9DA9D6717C7C6F500BFC6E4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9DA9D6617C7C6F500BFC6E4 /* UIKit.framework */; };
@@ -39,7 +40,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		C94D45EF17DA2A5400F6ADA7 /* Rewritten_APIsTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Rewritten_APIsTests.m; sourceTree = "<group>"; };
+		C94D45EF17DA2A5400F6ADA7 /* AlertViewTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlertViewTests.m; sourceTree = "<group>"; };
+		C9604F83187E232400190707 /* ActionSheetTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActionSheetTests.m; sourceTree = "<group>"; };
 		C9DA9D5F17C7C6F500BFC6E4 /* Rewritten APIs.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Rewritten APIs.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9DA9D6217C7C6F500BFC6E4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		C9DA9D6417C7C6F500BFC6E4 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -97,7 +99,7 @@
 			isa = PBXGroup;
 			children = (
 				C9DA9D6817C7C6F500BFC6E4 /* Rewritten APIs */,
-				C9DA9D8A17C7C6F500BFC6E4 /* Rewritten APIsTests */,
+				C9DA9D8A17C7C6F500BFC6E4 /* Rewritten APIs Tests */,
 				C9DA9D6117C7C6F500BFC6E4 /* Frameworks */,
 				C9DA9D6017C7C6F500BFC6E4 /* Products */,
 			);
@@ -150,12 +152,14 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		C9DA9D8A17C7C6F500BFC6E4 /* Rewritten APIsTests */ = {
+		C9DA9D8A17C7C6F500BFC6E4 /* Rewritten APIs Tests */ = {
 			isa = PBXGroup;
 			children = (
-				C94D45EF17DA2A5400F6ADA7 /* Rewritten_APIsTests.m */,
+				C9604F83187E232400190707 /* ActionSheetTests.m */,
+				C94D45EF17DA2A5400F6ADA7 /* AlertViewTests.m */,
 				C9DA9D8B17C7C6F500BFC6E4 /* Supporting Files */,
 			);
+			name = "Rewritten APIs Tests";
 			path = "Rewritten APIsTests";
 			sourceTree = "<group>";
 		};
@@ -315,7 +319,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C94D45F017DA2A5400F6ADA7 /* Rewritten_APIsTests.m in Sources */,
+				C94D45F017DA2A5400F6ADA7 /* AlertViewTests.m in Sources */,
+				C9604F84187E232400190707 /* ActionSheetTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

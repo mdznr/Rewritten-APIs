@@ -1,15 +1,16 @@
 //
-//  Rewritten_APIsTests.m
-//  Rewritten APIsTests
+//  AlertViewTests.m
+//  Rewritten APIs Tests
 //
 //  Created by Matt on 8/23/13.
 //  Copyright (c) 2013 Matt Zanchelli. All rights reserved.
 //
 
 #import <XCTest/XCTest.h>
+
 #import "MTZAlertView.h"
 
-@interface Rewritten_APIsTests : XCTestCase
+@interface AlertViewTests : XCTestCase
 
 @property (strong, nonatomic) NSString *title;
 @property (strong, nonatomic) NSString *message;
@@ -17,7 +18,7 @@
 
 @end
 
-@implementation Rewritten_APIsTests
+@implementation AlertViewTests
 
 - (void)setUp
 {
