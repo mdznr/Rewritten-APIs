@@ -57,7 +57,13 @@
 	_actionSheet.delegate = self;
 	_actionSheet.cancelButtonTitle = @"Cancel";
 	_actionSheet.destructiveButtonTitle = @"Destructive";
+	
+	// These shouldn't work
 	[_actionSheet addButtonWithTitle:nil andSelector:nil];
+	[_actionSheet addButtonWithTitle:@"Test 2" andSelector:nil];
+	
+	// These should:
+	[_actionSheet addButtonWithTitle:@"Test Empty Block" andBlock:nil];
 	[_actionSheet addButtonWithTitle:@"Other Button" andSelector:@selector(tappedOtherButton:)];
 	[_actionSheet addButtonWithTitle:@"Another Button"
 							andBlock:^{
