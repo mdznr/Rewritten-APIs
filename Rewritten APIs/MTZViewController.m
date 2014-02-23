@@ -58,11 +58,6 @@
 	_actionSheet.cancelButtonTitle = @"Cancel";
 	_actionSheet.destructiveButtonTitle = @"Destructive";
 	
-	// These shouldn't work
-	[_actionSheet addButtonWithTitle:nil andSelector:nil];
-	[_actionSheet addButtonWithTitle:@"Test 2" andSelector:nil];
-	
-	// These should:
 	[_actionSheet addButtonWithTitle:@"Test Empty Block" andBlock:nil];
 	[_actionSheet addButtonWithTitle:@"Other Button" andSelector:@selector(tappedOtherButton:)];
 	[_actionSheet addButtonWithTitle:@"Another Button"
@@ -70,20 +65,6 @@
 								NSLog(@"Tapped Another Button");
 							}];
 	[_actionSheet showInView:self.view];
-	
-	[self performSelector:@selector(actionSheetAPITest)
-			   withObject:nil
-			   afterDelay:2.0f];
-}
-
-- (void)actionSheetAPITest
-{
-	NSLog(@"%@", _actionSheet.buttonTitles);
-	NSLog(@"%@", _actionSheet.otherButtonTitles);
-//	[_actionSheet dismissWithTappedButtonTitle:_actionSheet.cancelButtonTitle animated:YES]; // This shouldn't be necessary
-//	[_actionSheet dismissWithTappedButtonTitle:_actionSheet.destructiveButtonTitle animated:YES]; // This shouldn't be necessary
-//	[_actionSheet dismissWithTappedButtonTitle:@"Cancel" animated:YES]; // This shouldn't be necessary
-//	[_actionSheet dismissWithCancelAnimated:YES];
 }
 
 - (void)actionSheetDidTapDestructiveButton:(MTZActionSheet *)actionSheet
@@ -120,19 +101,6 @@
 							  NSLog(@"Tapped Another Alert Button");
 						  }];
 	[_alertView show];
-	
-	 [self performSelector:@selector(alertViewAPITest)
-				withObject:nil
-				afterDelay:2.0f];
-}
-
-- (void)alertViewAPITest
-{
-	NSLog(@"%@", _alertView.buttonTitles);
-	NSLog(@"%@", _alertView.otherButtonTitles);
-//	[_alertView dismissWithTappedButtonTitle:_alertView.cancelButtonTitle animated:YES]; // This shouldn't be necessary
-//	[_alertView dismissWithTappedButtonTitle:@"Cancel" animated:YES]; // This shouldn't be necessary
-//	[_alertView dismissWithCancelAnimated:YES];
 }
 
 - (void)alertViewDidTapCancelButton:(MTZAlertView *)alertView
