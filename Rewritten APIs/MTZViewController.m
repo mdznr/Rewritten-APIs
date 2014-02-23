@@ -35,18 +35,16 @@
 	_actionSheet.cancelButtonTitle = NSLocalizedString(@"Cancel", nil);
 	_actionSheet.destructiveButtonTitle = @"Destructive";
 	
-	[_actionSheet addButtonWithTitle:@"Test Empty Block" andBlock:nil];
-	[_actionSheet addButtonWithTitle:@"Other Button" andSelector:@selector(tappedOtherButton:)];
+	// You can add a button and corresponding selector.
+	[_actionSheet addButtonWithTitle:@"A Button" andSelector:@selector(tappedAButton:)];
+	
+	// You can add a button and corresponding block.
 	[_actionSheet addButtonWithTitle:@"Another Button"
 							andBlock:^{
 								NSLog(@"Tapped Another Button");
 							}];
+	
 	[_actionSheet showInView:self.view];
-}
-
-- (void)actionSheetDidTapDestructiveButton:(MTZActionSheet *)actionSheet
-{
-	NSLog(@"Action Sheet (%@) tapped Destructive Button", actionSheet);
 }
 
 - (void)actionSheetDidTapCancelButton:(MTZActionSheet *)actionSheet
@@ -54,9 +52,14 @@
 	NSLog(@"Action Sheet (%@) tapped Cancel Button", actionSheet);
 }
 
-- (void)tappedOtherButton:(id)sender
+- (void)actionSheetDidTapDestructiveButton:(MTZActionSheet *)actionSheet
 {
-	NSLog(@"Tapped Other Button: %@", sender);
+	NSLog(@"Action Sheet (%@) tapped Destructive Button", actionSheet);
+}
+
+- (void)tappedAButton:(id)sender
+{
+	NSLog(@"Tapped A Button: %@", sender);
 }
 
 
