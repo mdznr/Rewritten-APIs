@@ -23,34 +23,12 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
-	
-	self.view.backgroundColor = [UIColor whiteColor];
-	
-	// Setting up Action Sheet Button
-	UIButton *actionSheetButton = [[UIButton alloc] initWithFrame:CGRectMake(10, 10, 300, 44)];
-	[actionSheetButton setBackgroundColor:[UIColor blueColor]];
-	[actionSheetButton setShowsTouchWhenHighlighted:YES];
-	[actionSheetButton setTitle:@"Show Action Sheet" forState:UIControlStateNormal];
-	[actionSheetButton addTarget:self
-						  action:@selector(didTapActionSheetButton:)
-				forControlEvents:UIControlEventTouchUpInside];
-	[self.view addSubview:actionSheetButton];
-	
-	// Setting up Alert View Button
-	UIButton *alertViewButton = [[UIButton alloc] initWithFrame:CGRectMake(10, 64, 300, 44)];
-	[alertViewButton setBackgroundColor:[UIColor blueColor]];
-	[alertViewButton setShowsTouchWhenHighlighted:YES];
-	[alertViewButton setTitle:@"Show Alert" forState:UIControlStateNormal];
-	[alertViewButton addTarget:self
-						action:@selector(didTapAlertButton:)
-			  forControlEvents:UIControlEventTouchUpInside];
-	[self.view addSubview:alertViewButton];
 }
 
 
 #pragma mark Action Sheet
 
-- (void)didTapActionSheetButton:(id)sender
+- (IBAction)didTapActionSheetButton:(id)sender
 {
 	_actionSheet = [[MTZActionSheet alloc] init];
 	_actionSheet.title = @"My Action Sheet Title";
@@ -85,7 +63,7 @@
 
 #pragma mark Alert
 
-- (void)didTapAlertButton:(id)sender
+- (IBAction)didTapAlertButton:(id)sender
 {
 	_alertView = [[MTZAlertView alloc] init];
 	_alertView.title = @"My Alert View Title";
