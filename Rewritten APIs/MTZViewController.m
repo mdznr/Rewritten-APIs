@@ -26,7 +26,7 @@
 }
 
 
-#pragma mark Action Sheet
+#pragma mark - Action Sheet
 
 - (IBAction)didTapActionSheetButton:(id)sender
 {
@@ -61,7 +61,7 @@
 }
 
 
-#pragma mark Alert
+#pragma mark - Alert
 
 - (IBAction)didTapAlertButton:(id)sender
 {
