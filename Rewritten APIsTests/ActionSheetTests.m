@@ -24,6 +24,9 @@
 @property (strong, nonatomic) UIToolbar *toolbar;
 @property (strong, nonatomic) UIView *view;
 
+// Used to see if a block or selector has been called
+@property (nonatomic, getter = didReachCodeBlock) BOOL codeBlockReached;
+
 @end
 
 @implementation ActionSheetTests
@@ -51,6 +54,11 @@
 	_as = [[MTZActionSheet alloc] init];
 	_as.title = _title;
 	_as.style = _style;
+	
+	// By default, no
+	_codeBlockReached = NO;
+	
+	
 }
 
 - (void)tearDown
@@ -118,10 +126,87 @@
 	// Dismiss
 	[_as dismissWithCancelAnimated:YES];
 	XCTAssertEqual(_as.visible, NO, @"Action sheet should no longer be visible");
+	
+	[_as showInView:_view];
+	XCTAssertEqual(_as.visible, YES, @"Action sheet should be visible again");
 }
 
 
-#pragma mark Configuring Buttons
+#pragma mark Button Titles and Configuration
+
+- (void)testButtonTitlesProperty
+{
+	NSArray *buttonTitles = @[@"ABC", @"DEF", @"GHI"];
+	for ( NSString *buttonTitle in buttonTitles ) {
+		[_as addButtonWithTitle:buttonTitle andBlock:^{}];
+	}
+	
+	XCTAssertEqualObjects(_as.buttonTitles, buttonTitles, @"Button titles do not match");
+	XCTAssertEqualObjects(_as.otherButtonTitles, buttonTitles, @"Other button titles do not match");
+}
+
+- (void)testButtonTitlesPropertyWithCancelButton
+{
+	NSArray *buttonTitles = @[@"ABC", @"DEF", @"GHI"];
+	for (NSString *buttonTitle in buttonTitles ) {
+		[_as addButtonWithTitle:buttonTitle andBlock:^{}];
+	}
+	
+	_as.cancelButtonTitle = @"Cancel";
+	
+	XCTAssertEqualObjects(_as.buttonTitles, [buttonTitles arrayByAddingObject:@"Cancel"], @"Button titles do not match");
+	XCTAssertEqualObjects(_as.otherButtonTitles, buttonTitles, @"Other button titles do not match");
+}
+
+- (void)testButtonTitlesPropertyWithDestructiveButton
+{
+	NSArray *buttonTitles = @[@"ABC", @"DEF", @"GHI"];
+	for (NSString *buttonTitle in buttonTitles ) {
+		[_as addButtonWithTitle:buttonTitle andBlock:^{}];
+	}
+	
+	_as.destructiveButtonTitle = @"Destructive";
+	
+	XCTAssertEqualObjects(_as.buttonTitles, [@[@"Destructive"] arrayByAddingObjectsFromArray:buttonTitles], @"Button titles do not match");
+	XCTAssertEqualObjects(_as.otherButtonTitles, buttonTitles, @"Other button titles do not match");
+}
+
+- (void)testButtonTitlesPropertyWithCancelAndDestructiveButtons
+{
+	NSArray *buttonTitles = @[@"ABC", @"DEF", @"GHI"];
+	for (NSString *buttonTitle in buttonTitles ) {
+		[_as addButtonWithTitle:buttonTitle andBlock:^{}];
+	}
+	
+	_as.destructiveButtonTitle = @"Destructive";
+	_as.cancelButtonTitle = @"Cancel";
+	
+	XCTAssertEqualObjects(_as.buttonTitles, [@[@"Destructive"] arrayByAddingObjectsFromArray:[buttonTitles arrayByAddingObject:@"Cancel"]], @"Button titles do not match");
+	XCTAssertEqualObjects(_as.otherButtonTitles, buttonTitles, @"Other button titles do not match");
+}
+
+
+#pragma mark Configuring Buttons with Actions
+
+- (void)testAddingButtonAndBlock
+{
+	NSString *buttonTitle = @"Button Title";
+	
+	ActionSheetTests * __weak weakSelf = self;
+	[_as addButtonWithTitle:buttonTitle andBlock:^{
+		[weakSelf reachCodeBlock];
+	}];
+	
+	[_as dismissWithTappedButtonTitle:buttonTitle animated:NO];
+	
+#warning this fails, likely because the action sheet hasn't perfomed the block yet
+	XCTAssertTrue([self didReachCodeBlock], @"Did not reach code block");
+}
+
+- (void)reachCodeBlock
+{
+	_codeBlockReached = YES;
+}
 
 
 #pragma mark Presenting the Action Sheet
