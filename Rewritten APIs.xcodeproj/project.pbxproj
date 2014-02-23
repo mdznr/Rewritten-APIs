@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C90E856818BAB9DA007DA7EB /* MTZActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = C90E856518BAB9DA007DA7EB /* MTZActionSheet.m */; };
+		C90E856918BAB9DA007DA7EB /* UIActionSheet+DelegateFix.m in Sources */ = {isa = PBXBuildFile; fileRef = C90E856718BAB9DA007DA7EB /* UIActionSheet+DelegateFix.m */; };
+		C90E856E18BAB9E4007DA7EB /* MTZAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = C90E856B18BAB9E4007DA7EB /* MTZAlertView.m */; };
+		C90E856F18BAB9E4007DA7EB /* UIAlertView+DelegateFix.m in Sources */ = {isa = PBXBuildFile; fileRef = C90E856D18BAB9E4007DA7EB /* UIAlertView+DelegateFix.m */; };
 		C94D45F017DA2A5400F6ADA7 /* AlertViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C94D45EF17DA2A5400F6ADA7 /* AlertViewTests.m */; };
 		C9604F84187E232400190707 /* ActionSheetTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C9604F83187E232400190707 /* ActionSheetTests.m */; };
 		C9DA9D6317C7C6F500BFC6E4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9DA9D6217C7C6F500BFC6E4 /* Foundation.framework */; };
@@ -23,10 +27,6 @@
 		C9DA9D8617C7C6F500BFC6E4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9DA9D6217C7C6F500BFC6E4 /* Foundation.framework */; };
 		C9DA9D8717C7C6F500BFC6E4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9DA9D6617C7C6F500BFC6E4 /* UIKit.framework */; };
 		C9DA9D8F17C7C6F500BFC6E4 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C9DA9D8D17C7C6F500BFC6E4 /* InfoPlist.strings */; };
-		C9DA9D9C17C7CACE00BFC6E4 /* MTZActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = C9DA9D9B17C7CACE00BFC6E4 /* MTZActionSheet.m */; };
-		C9DA9DAB17C8172800BFC6E4 /* UIActionSheet+DelegateFix.m in Sources */ = {isa = PBXBuildFile; fileRef = C9DA9DAA17C8172800BFC6E4 /* UIActionSheet+DelegateFix.m */; };
-		C9DA9DF517CA7ED600BFC6E4 /* MTZAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = C9DA9DF417CA7ED600BFC6E4 /* MTZAlertView.m */; };
-		C9DA9DFB17CA8BF300BFC6E4 /* UIAlertView+DelegateFix.m in Sources */ = {isa = PBXBuildFile; fileRef = C9DA9DFA17CA8BF300BFC6E4 /* UIAlertView+DelegateFix.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +40,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C90E856418BAB9DA007DA7EB /* MTZActionSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MTZActionSheet.h; path = MTZActionSheet/MTZActionSheet.h; sourceTree = SOURCE_ROOT; };
+		C90E856518BAB9DA007DA7EB /* MTZActionSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MTZActionSheet.m; path = MTZActionSheet/MTZActionSheet.m; sourceTree = SOURCE_ROOT; };
+		C90E856618BAB9DA007DA7EB /* UIActionSheet+DelegateFix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIActionSheet+DelegateFix.h"; path = "MTZActionSheet/UIActionSheet+DelegateFix.h"; sourceTree = SOURCE_ROOT; };
+		C90E856718BAB9DA007DA7EB /* UIActionSheet+DelegateFix.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIActionSheet+DelegateFix.m"; path = "MTZActionSheet/UIActionSheet+DelegateFix.m"; sourceTree = SOURCE_ROOT; };
+		C90E856A18BAB9E4007DA7EB /* MTZAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MTZAlertView.h; path = MTZAlertView/MTZAlertView.h; sourceTree = SOURCE_ROOT; };
+		C90E856B18BAB9E4007DA7EB /* MTZAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MTZAlertView.m; path = MTZAlertView/MTZAlertView.m; sourceTree = SOURCE_ROOT; };
+		C90E856C18BAB9E4007DA7EB /* UIAlertView+DelegateFix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIAlertView+DelegateFix.h"; path = "MTZAlertView/UIAlertView+DelegateFix.h"; sourceTree = SOURCE_ROOT; };
+		C90E856D18BAB9E4007DA7EB /* UIAlertView+DelegateFix.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIAlertView+DelegateFix.m"; path = "MTZAlertView/UIAlertView+DelegateFix.m"; sourceTree = SOURCE_ROOT; };
 		C94D45EF17DA2A5400F6ADA7 /* AlertViewTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlertViewTests.m; sourceTree = "<group>"; };
 		C9604F83187E232400190707 /* ActionSheetTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActionSheetTests.m; sourceTree = "<group>"; };
 		C9DA9D5F17C7C6F500BFC6E4 /* Rewritten APIs.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Rewritten APIs.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -61,14 +69,6 @@
 		C9DA9D8417C7C6F500BFC6E4 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		C9DA9D8C17C7C6F500BFC6E4 /* Rewritten APIsTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Rewritten APIsTests-Info.plist"; sourceTree = "<group>"; };
 		C9DA9D8E17C7C6F500BFC6E4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		C9DA9D9A17C7CACE00BFC6E4 /* MTZActionSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTZActionSheet.h; sourceTree = "<group>"; };
-		C9DA9D9B17C7CACE00BFC6E4 /* MTZActionSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTZActionSheet.m; sourceTree = "<group>"; };
-		C9DA9DA917C8172800BFC6E4 /* UIActionSheet+DelegateFix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIActionSheet+DelegateFix.h"; sourceTree = "<group>"; };
-		C9DA9DAA17C8172800BFC6E4 /* UIActionSheet+DelegateFix.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIActionSheet+DelegateFix.m"; sourceTree = "<group>"; };
-		C9DA9DF317CA7ED600BFC6E4 /* MTZAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTZAlertView.h; sourceTree = "<group>"; };
-		C9DA9DF417CA7ED600BFC6E4 /* MTZAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTZAlertView.m; sourceTree = "<group>"; };
-		C9DA9DF917CA8BF300BFC6E4 /* UIAlertView+DelegateFix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIAlertView+DelegateFix.h"; sourceTree = "<group>"; };
-		C9DA9DFA17CA8BF300BFC6E4 /* UIAlertView+DelegateFix.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAlertView+DelegateFix.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -175,10 +175,10 @@
 		C9DA9DF617CA7EE200BFC6E4 /* Action Sheet */ = {
 			isa = PBXGroup;
 			children = (
-				C9DA9D9A17C7CACE00BFC6E4 /* MTZActionSheet.h */,
-				C9DA9D9B17C7CACE00BFC6E4 /* MTZActionSheet.m */,
-				C9DA9DA917C8172800BFC6E4 /* UIActionSheet+DelegateFix.h */,
-				C9DA9DAA17C8172800BFC6E4 /* UIActionSheet+DelegateFix.m */,
+				C90E856418BAB9DA007DA7EB /* MTZActionSheet.h */,
+				C90E856518BAB9DA007DA7EB /* MTZActionSheet.m */,
+				C90E856618BAB9DA007DA7EB /* UIActionSheet+DelegateFix.h */,
+				C90E856718BAB9DA007DA7EB /* UIActionSheet+DelegateFix.m */,
 			);
 			name = "Action Sheet";
 			sourceTree = "<group>";
@@ -186,10 +186,10 @@
 		C9DA9DF717CA7EE900BFC6E4 /* Alert View */ = {
 			isa = PBXGroup;
 			children = (
-				C9DA9DF317CA7ED600BFC6E4 /* MTZAlertView.h */,
-				C9DA9DF417CA7ED600BFC6E4 /* MTZAlertView.m */,
-				C9DA9DF917CA8BF300BFC6E4 /* UIAlertView+DelegateFix.h */,
-				C9DA9DFA17CA8BF300BFC6E4 /* UIAlertView+DelegateFix.m */,
+				C90E856A18BAB9E4007DA7EB /* MTZAlertView.h */,
+				C90E856B18BAB9E4007DA7EB /* MTZAlertView.m */,
+				C90E856C18BAB9E4007DA7EB /* UIAlertView+DelegateFix.h */,
+				C90E856D18BAB9E4007DA7EB /* UIAlertView+DelegateFix.m */,
 			);
 			name = "Alert View";
 			sourceTree = "<group>";
@@ -305,13 +305,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C9DA9DAB17C8172800BFC6E4 /* UIActionSheet+DelegateFix.m in Sources */,
-				C9DA9DF517CA7ED600BFC6E4 /* MTZAlertView.m in Sources */,
-				C9DA9DFB17CA8BF300BFC6E4 /* UIAlertView+DelegateFix.m in Sources */,
+				C90E856F18BAB9E4007DA7EB /* UIAlertView+DelegateFix.m in Sources */,
+				C90E856918BAB9DA007DA7EB /* UIActionSheet+DelegateFix.m in Sources */,
 				C9DA9D7317C7C6F500BFC6E4 /* MTZAppDelegate.m in Sources */,
-				C9DA9D9C17C7CACE00BFC6E4 /* MTZActionSheet.m in Sources */,
+				C90E856818BAB9DA007DA7EB /* MTZActionSheet.m in Sources */,
 				C9DA9D6F17C7C6F500BFC6E4 /* main.m in Sources */,
 				C9DA9D7C17C7C6F500BFC6E4 /* MTZViewController.m in Sources */,
+				C90E856E18BAB9E4007DA7EB /* MTZAlertView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
