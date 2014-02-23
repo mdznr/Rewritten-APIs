@@ -30,8 +30,7 @@
 
 - (IBAction)didTapActionSheetButton:(id)sender
 {
-	_actionSheet = [[MTZActionSheet alloc] init];
-	_actionSheet.title = @"My Action Sheet Title";
+	_actionSheet = [[MTZActionSheet alloc] initWithTitle:@"My Action Sheet Title"];
 	_actionSheet.delegate = self;
 	_actionSheet.cancelButtonTitle = @"Cancel";
 	_actionSheet.destructiveButtonTitle = @"Destructive";
