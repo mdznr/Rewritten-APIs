@@ -32,7 +32,7 @@
 {
 	_actionSheet = [[MTZActionSheet alloc] initWithTitle:@"My Action Sheet Title"];
 	_actionSheet.delegate = self;
-	_actionSheet.cancelButtonTitle = @"Cancel";
+	_actionSheet.cancelButtonTitle = NSLocalizedString(@"Cancel", nil);
 	_actionSheet.destructiveButtonTitle = @"Destructive";
 	
 	[_actionSheet addButtonWithTitle:@"Test Empty Block" andBlock:nil];
@@ -69,8 +69,7 @@
 	_alertView.message = @"My Message";
 	_alertView.style = UIAlertViewStyleSecureTextInput;
 	_alertView.delegate = self;
-	_alertView.cancelButtonTitle = @"Cancel";
-	[_alertView addButtonWithTitle:nil andSelector:nil];
+	_alertView.cancelButtonTitle = NSLocalizedString(@"Cancel", nil);
 	[_alertView addButtonWithTitle:@"Other Button"
 					   andSelector:@selector(tappedOtherAlertButton:)];
 	[_alertView addButtonWithTitle:@"Another Button"
