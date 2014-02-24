@@ -96,18 +96,6 @@ NSString * const kMTZAlertViewPasswordInput = @"MTZAlertViewPasswordInput";
 	return __buttonTitles;
 }
 
-- (NSUInteger)numberOfButtons
-{
-	NSUInteger count = __buttonTitles.count;
-	if ( _cancelButtonTitle ) count++;
-	return count;
-}
-
-- (NSUInteger)numberOfOtherButtons
-{
-	return __buttonTitles.count;
-}
-
 - (BOOL)isVisible
 {
 	return [_alertView isVisible];

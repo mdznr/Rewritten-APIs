@@ -70,19 +70,6 @@
 	return __buttonTitles;
 }
 
-- (NSUInteger)numberOfButtons
-{
-	NSUInteger count = __buttonTitles.count;
-	if ( _destructiveButtonTitle ) count++;
-	if ( _cancelButtonTitle ) count++;
-	return count;
-}
-
-- (NSUInteger)numberOfOtherButtons
-{
-	return __buttonTitles.count;
-}
-
 - (BOOL)isVisible
 {
 	if ( !_actionSheet ) return NO;
