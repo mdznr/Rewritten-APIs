@@ -81,20 +81,6 @@ NS_CLASS_AVAILABLE_IOS(2_0) @interface MTZAlertView : NSObject
 /// Does not include @c cancelButtonTitle.
 - (NSArray *)otherButtonTitles;
 
-/*
-#warning do we even need this API?
-/// The total number of buttons on the alert view.
-/// Includes the cancel button, if set.
-- (NSUInteger)numberOfButtons;
-*/
-
-/*
-#warning do we even need this API?
-/// The number of buttons on the alert view.
-/// Does not include the cancel button.
-- (NSUInteger)numberOfOtherButtons;
- */
-
 /// The text value for the input fields (only available in some styles)
 /// @discussion @c UIAlertViewStyleDefault will have no input fields and will always return nil
 /// @discussion @c UIAlertViewStylePlainTextInput will have one input field. Use @c kMTZAlertViewPlainTextInput to get the text in the plain text input field.

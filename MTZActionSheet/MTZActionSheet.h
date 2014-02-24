@@ -54,20 +54,6 @@ NS_CLASS_AVAILABLE_IOS(2_0) @interface MTZActionSheet : NSObject
 /// Does not include @c cancelButtonTitle and @c destructiveButtonTitle.
 @property (nonatomic, readonly) NSArray *otherButtonTitles;
 
-/*
- #warning do we even need this API?
- /// The total number of buttons on the action sheet.
- /// Includes cancel and destructive buttons, if set.
- - (NSUInteger)numberOfButtons;
- */
-
-/*
- #warning do we even need this API?
- /// The number of buttons on the action sheet.
- /// Does not include cancel and destructive buttons.
- - (NSUInteger)numberOfOtherButtons;
- */
-
 
 #pragma mark Configuring Buttons
 
