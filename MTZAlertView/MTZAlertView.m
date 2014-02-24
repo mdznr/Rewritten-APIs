@@ -105,12 +105,12 @@ NSString * const kMTZAlertViewPasswordInput = @"MTZAlertViewPasswordInput";
 {
 	switch ( _style ) {
 		case UIAlertViewStylePlainTextInput:
-			return @{kMTZAlertViewPlainTextInput: [_alertView textFieldAtIndex:0].text};
+			return @{kMTZAlertViewPlainTextInput:  [_alertView textFieldAtIndex:0].text};
 		case UIAlertViewStyleSecureTextInput:
 			return @{kMTZAlertViewSecureTextInput: [_alertView textFieldAtIndex:0].text};
 		case UIAlertViewStyleLoginAndPasswordInput:
-			return @{kMTZAlertViewLoginInput:    [_alertView textFieldAtIndex:0].text,
-					 kMTZAlertViewPasswordInput: [_alertView textFieldAtIndex:1].text};
+			return @{kMTZAlertViewLoginInput:      [_alertView textFieldAtIndex:0].text,
+					 kMTZAlertViewPasswordInput:   [_alertView textFieldAtIndex:1].text};
 		case UIAlertViewStyleDefault:
 		default:
 			return nil;
