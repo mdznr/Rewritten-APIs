@@ -57,8 +57,8 @@ NS_CLASS_AVAILABLE_IOS(2_0) @interface MTZAlertView : NSObject
 #pragma mark Properties
 
 /// The receiver’s delegate or nil if it doesn’t have a delegate.
-/// @discussion When adding buttons with selectors, those selectors are performed on this.
-@property (strong, nonatomic) id<MTZAlertViewDelegate> delegate;
+/// @discussion When adding buttons with selectors, those selectors are called on this.
+@property (nonatomic, assign) id<MTZAlertViewDelegate> delegate;
 
 /// The kind of alert displayed to the user.
 /// @discussion This property determines how the alert view looks when it is presented. For a list of possible values, see the @c UIAlertViewStyle constants.

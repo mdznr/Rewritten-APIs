@@ -32,7 +32,7 @@ NS_CLASS_AVAILABLE_IOS(2_0) @interface MTZActionSheet : NSObject
 #pragma mark Properties
 
 /// The receiver’s delegate or nil if it doesn’t have a delegate.
-/// @discussion When adding buttons with selectors, those selectors are performed on this.
+/// @discussion When adding buttons with selectors, those selectors are called on this.
 @property (nonatomic, assign) id<MTZActionSheetDelegate> delegate;
 
 /// The receiver’s presentation style. Default is @c UIActionSheetStyleAutomatic.
