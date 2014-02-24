@@ -12,9 +12,6 @@
 
 @interface MTZViewController () <MTZActionSheetDelegate, MTZAlertViewDelegate>
 
-@property (strong, nonatomic) MTZActionSheet *actionSheet;
-@property (strong, nonatomic) MTZAlertView *alertView;
-
 @end
 
 @implementation MTZViewController
@@ -30,21 +27,21 @@
 
 - (IBAction)didTapActionSheetButton:(id)sender
 {
-	_actionSheet = [[MTZActionSheet alloc] initWithTitle:@"My Action Sheet Title"];
-	_actionSheet.delegate = self;
-	_actionSheet.cancelButtonTitle = NSLocalizedString(@"Cancel", nil);
-	_actionSheet.destructiveButtonTitle = @"Destructive";
+	MTZActionSheet *actionSheet = [[MTZActionSheet alloc] initWithTitle:@"My Action Sheet Title"];
+	actionSheet.delegate = self;
+	actionSheet.cancelButtonTitle = NSLocalizedString(@"Cancel", nil);
+	actionSheet.destructiveButtonTitle = @"Destructive";
 	
 	// You can add a button and corresponding selector.
-	[_actionSheet addButtonWithTitle:@"A Button" andSelector:@selector(tappedAButton:)];
+	[actionSheet addButtonWithTitle:@"A Button" andSelector:@selector(tappedAButton:)];
 	
 	// You can add a button and corresponding block.
-	[_actionSheet addButtonWithTitle:@"Another Button"
-							andBlock:^{
-								NSLog(@"Tapped Another Button");
-							}];
+	[actionSheet addButtonWithTitle:@"Another Button"
+						   andBlock:^{
+							   NSLog(@"Tapped Another Button");
+						   }];
 	
-	[_actionSheet showInView:self.view];
+	[actionSheet showInView:self.view];
 }
 
 - (void)actionSheetDidTapCancelButton:(MTZActionSheet *)actionSheet
@@ -63,23 +60,25 @@
 }
 
 
-#pragma mark - Alert
+#pragma mark - Alert View
 
-- (IBAction)didTapAlertButton:(id)sender
+- (IBAction)didTapAlertViewButton:(id)sender
 {
-	_alertView = [[MTZAlertView alloc] init];
-	_alertView.title = @"My Alert View Title";
-	_alertView.message = @"My Message";
-	_alertView.style = UIAlertViewStyleSecureTextInput;
-	_alertView.delegate = self;
-	_alertView.cancelButtonTitle = NSLocalizedString(@"Cancel", nil);
-	[_alertView addButtonWithTitle:@"Other Button"
-					   andSelector:@selector(tappedOtherAlertButton:)];
-	[_alertView addButtonWithTitle:@"Another Button"
-						  andBlock:^{
-							  NSLog(@"Tapped Another Alert Button");
-						  }];
-	[_alertView show];
+	MTZAlertView *alertView = [[MTZAlertView alloc] initWithTitle:@"My Alert View Title"
+													   andMessage:@"My Message"];
+	alertView.delegate = self;
+	alertView.cancelButtonTitle = NSLocalizedString(@"Cancel", nil);
+	
+	// You can add a button and corresponding selector.
+	[alertView addButtonWithTitle:@"Other Button" andSelector:@selector(tappedOtherAlertButton:)];
+	
+	// You can add a button and corresponding block.
+	[alertView addButtonWithTitle:@"Another Button"
+						 andBlock:^{
+							 NSLog(@"Tapped Another Alert Button");
+						 }];
+	
+	[alertView show];
 }
 
 - (void)alertViewDidTapCancelButton:(MTZAlertView *)alertView
@@ -87,10 +86,10 @@
 	NSLog(@"Alert View (%@) tapped Cancel Button", alertView);
 }
 
-- (void)tappedOtherAlertButton:(id)sender
+- (void)tappedOtherAlertButton:(MTZAlertView *)alertView
 {
-	NSLog(@"Tapped Other Alert Button: %@", sender);
-//	[(MTZAlertView *)sender textInInputField];
+	NSLog(@"Tapped Other Alert Button: %@", alertView);
+//	[(MTZAlertView *)alertView textInInputField];
 }
 
 - (BOOL)alertView:(MTZAlertView *)alertView shouldEnableButtonWithTitle:(NSString *)buttonTitle
