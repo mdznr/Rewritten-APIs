@@ -8,6 +8,10 @@ This is a project to redesign and rewrite the APIs for some of the UIKit classes
 
 These are not recreations of UIKit classes, but are classes that interface with the corresponding original UIKit class. This project started to ease some of my own annoyances with the original APIs. UIKit has a ton of phenomenal APIs, but there are some places where things could be improved. It’s been a lot of fun to practice and experiment with API design.
 
+[Keynote Presentation (HTML)](http://mdznr.com/rcos/talks/goodapidesign)
+
+[Presentation with notes (PDF)](http://mdznr.com/rcos/talks/goodapidesign.pdf)
+
 ### Current API
 
 A simple use-case example with the original `UIActionSheet`:
