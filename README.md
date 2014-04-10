@@ -17,7 +17,7 @@ These are not recreations of UIKit classes, but are classes that interface with 
 A simple use-case example with the original `UIActionSheet`:
 
 In a method in of a view controller:
-```
+```objc
 UIActionSheet *myActionSheet = [[UIActionSheet alloc] initWithTitle:NSLocalizedString(@"Title", nil)
 															   delegate:self
 													  cancelButtonTitle:NSLocalizedString(@"Cancel", nil)
@@ -27,7 +27,7 @@ UIActionSheet *myActionSheet = [[UIActionSheet alloc] initWithTitle:NSLocalizedS
 ```
 
 The view controller is set as the delegate, and has to implement `actionSheet:clickedButtonAtIndex:`:
-```
+```objc
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
 	switch (buttonIndex) {
@@ -53,12 +53,12 @@ These classes do not have enough encapsulation. They push responsibility of mapp
 
 The same example as above but using the rewritten API:
 
-```
+```objc
 MTZActionSheet *as = [[MTZActionSheet alloc] init];
-as.title = @“Title”;
+as.title = @"Title";
 as.cancelButtonTitle = NSLocalizedString(@"Cancel", nil)
-[as addButtonWithTitle:NSLocalizedString(@“Open”, nil) andSelector:@selector(openActionSheetButtonTapped)];
-[as addButtonWithTitle:NSLocalizedString(@“Copy”, nil) andSelector:@selector(copyActionSheetButtonTapped)];
+[as addButtonWithTitle:NSLocalizedString(@"Open", nil) andSelector:@selector(openActionSheetButtonTapped)];
+[as addButtonWithTitle:NSLocalizedString(@"Copy", nil) andSelector:@selector(copyActionSheetButtonTapped)];
 [as showInView:self.view];
 ```
 
