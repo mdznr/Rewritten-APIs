@@ -12,6 +12,7 @@
 
 @interface AlertViewTests : XCTestCase
 
+// Test properties of alert view
 @property (strong, nonatomic) NSString *title;
 @property (strong, nonatomic) NSString *message;
 @property (nonatomic) UIAlertViewStyle style;

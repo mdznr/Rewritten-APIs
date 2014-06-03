@@ -197,7 +197,7 @@ NSString * const kMTZAlertViewPasswordInput = @"MTZAlertViewPasswordInput";
 			[_alertView addButtonWithTitle:_cancelButtonTitle];
 			_alertView.cancelButtonIndex = _alertView.numberOfButtons-1;
 		}
-	} else {
+	} else if ( __buttonTitles.count ) {
 		_cancelButtonOnBottom = NO;
 		// Make sure Cancel is on the left when only two buttons
 		if ( _cancelButtonTitle ) {
@@ -206,6 +206,12 @@ NSString * const kMTZAlertViewPasswordInput = @"MTZAlertViewPasswordInput";
 		}
 		// Add the other button
 		[_alertView addButtonWithTitle:__buttonTitles[0]];
+	} else {
+		_cancelButtonOnBottom = NO;
+		if ( _cancelButtonTitle ) {
+			[_alertView addButtonWithTitle:_cancelButtonTitle];
+			_alertView.cancelButtonIndex = 0;
+		}
 	}
 	
 	return _alertView;
